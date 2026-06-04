@@ -1,0 +1,43 @@
+---
+name: Utrecht University
+description: Utrecht University public developer/API footprint review for APIs.json cataloging.
+url: https://raw.githubusercontent.com/api-evangelist/utrecht/refs/heads/main/review.yml
+created: '2026-06-03'
+modified: '2026-06-03'
+reviews:
+  - date: '2026-06-03'
+    rating: 2
+    summary: >-
+      Utrecht University has no consolidated self-service API developer portal. Its
+      verifiable public API footprint is open research infrastructure: a DSpace 9
+      institutional repository OAI-PMH endpoint (confirmed live, returns valid
+      OAI-PMH XML) and the open-source Yoda iRODS-based research data platform with
+      public code and docs but credentialed live access. A large public GitHub org
+      (UtrechtUniversity, ~394 repos) hosts open-source research software. The
+      catalog.data.uu.nl host did not resolve during review. No fabricated endpoints;
+      only URLs that returned verified responses are cataloged as APIs.
+    endpoints:
+      - url: https://dspace.library.uu.nl/server/oai/request?verb=Identify
+        status: 200
+        note: Live OAI-PMH Identify; DSpace 9 instance, valid OAI-PMH 2.0 XML response.
+      - url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
+        status: 200
+        note: OpenAIRE-format OAI-PMH set, responds 200.
+      - url: https://utrechtuniversity.github.io/yoda/
+        status: 200
+        note: Yoda technical documentation site, live.
+      - url: https://github.com/UtrechtUniversity
+        status: 200
+        note: Official public GitHub org confirmed, ~394 repositories.
+      - url: https://github.com/UtrechtUniversity/yoda
+        status: 200
+        note: Yoda platform source repository, live.
+      - url: https://www.uu.nl/en
+        status: 200
+        note: Official university website, live.
+      - url: https://catalog.data.uu.nl
+        status: 0
+        note: Did not resolve (curl 000) during review; not cataloged as an API.
+      - url: https://www.linkedin.com/school/utrecht-university/
+        status: 200
+        note: Official LinkedIn school page.

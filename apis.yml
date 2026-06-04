@@ -1,0 +1,86 @@
+---
+aid: utrecht
+name: Utrecht University
+description: >-
+  Utrecht University (Universiteit Utrecht) is a public research university in
+  Utrecht, Netherlands, ranked #105 in the QS World University Rankings 2025. Its
+  public developer and API footprint is centered on open research infrastructure
+  rather than a formal developer portal: the Utrecht University Library runs a
+  DSpace institutional repository exposing publication metadata via OAI-PMH, the
+  university maintains a large public GitHub organization (UtrechtUniversity) that
+  publishes open-source research software, and it develops Yoda, an iRODS-based
+  research data management platform. There is no single consolidated, self-service
+  API developer portal; most administrative and identity systems are gated behind
+  institutional SolisID/SSO.
+type: Index
+position: Consumer
+access: 3rd-Party
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/utrecht/refs/heads/main/apis.yml
+tags:
+  - Education
+  - Higher Education
+  - University
+  - Netherlands
+  - Research Data
+  - Open Access
+  - Library
+  - Open Source
+created: '2026-06-03'
+modified: '2026-06-03'
+specificationVersion: '0.19'
+apis:
+  - aid: utrecht:repository-oai
+    name: Utrecht University Repository OAI-PMH
+    description: >-
+      OAI-PMH metadata harvesting interface for the Utrecht University Library
+      DSpace institutional repository, exposing publication and resource metadata
+      of Utrecht University and UMC Utrecht researchers. Confirmed live as a
+      DSpace 9 instance responding to standard OAI-PMH verbs (Identify,
+      ListRecords, etc.).
+    humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+    baseURL: https://dspace.library.uu.nl/server/oai/request
+    tags: [ Library, Repository, OAI-PMH, Metadata, Open Access, Research ]
+    properties:
+      - type: Documentation
+        url: https://www.uu.nl/en/university-library/utrecht-university-repository
+      - type: OpenAIRE
+        url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
+  - aid: utrecht:yoda
+    name: Yoda Research Data Management Platform
+    description: >-
+      Yoda is an open-source, iRODS-based research data management service
+      developed by Utrecht University for depositing, sharing, publishing, and
+      preserving research data. It is programmatically accessible via the iRODS
+      protocol (iCommands / python-irodsclient) and exposes an HTTP API layer in
+      its open-source ruleset. Source and technical documentation are public;
+      live data access is gated behind institutional credentials.
+    humanURL: https://utrechtuniversity.github.io/yoda/
+    tags: [ Research Data, iRODS, Data Management, Open Source ]
+    properties:
+      - type: Documentation
+        url: https://utrechtuniversity.github.io/yoda/
+      - type: GitHub
+        url: https://github.com/UtrechtUniversity/yoda
+      - type: SourceCode
+        url: https://github.com/UtrechtUniversity/yoda-ruleset
+common:
+  - type: Website
+    url: https://www.uu.nl/en
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity
+  - type: LinkedIn
+    url: https://www.linkedin.com/school/utrecht-university/
+  - type: Repository
+    url: https://dspace.library.uu.nl/
+  - type: Plans
+    url: plans/utrecht-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/utrecht-rate-limits.yml
+  - type: FinOps
+    url: finops/utrecht-finops.yml
+  - type: Review
+    url: review.yml
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com
