@@ -64,6 +64,18 @@ apis:
         url: https://github.com/UtrechtUniversity/yoda
       - type: SourceCode
         url: https://github.com/UtrechtUniversity/yoda-ruleset
+      - type: OpenAPI
+        url: openapi/utrecht-yoda-core.yaml
+      - type: OpenAPI
+        url: openapi/utrecht-yoda-datarequest.yaml
+      - type: JSONSchema
+        url: json-schema/utrecht-yoda-result-schema.json
+      - type: x-vocabulary
+        url: vocabulary/utrecht-vocabulary.yml
+      - type: x-json-ld
+        url: json-ld/utrecht-context.jsonld
+      - type: x-rules
+        url: rules/utrecht-rules.yml
 common:
   - type: Website
     url: https://www.uu.nl/en

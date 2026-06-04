@@ -1,0 +1,50 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "uu": "https://www.uu.nl/ns/vocab#",
+    "name": "schema:name",
+    "url": "schema:url",
+    "description": "schema:description",
+    "Organization": "schema:CollegeOrUniversity",
+    "department": "schema:department",
+    "sameAs": "schema:sameAs",
+
+    "Repository": "uu:Repository",
+    "oaiBaseURL": {
+      "@id": "uu:oaiBaseURL",
+      "@type": "@id"
+    },
+    "protocolVersion": "uu:protocolVersion",
+
+    "Api": "schema:WebAPI",
+    "documentation": {
+      "@id": "schema:documentation",
+      "@type": "@id"
+    },
+    "endpoint": {
+      "@id": "uu:endpoint",
+      "@type": "@id"
+    },
+
+    "Result": "uu:Result",
+    "status": "uu:status",
+    "status_info": "uu:statusInfo",
+    "data": "uu:data",
+
+    "Collection": "uu:Collection",
+    "coll": "uu:collectionPath",
+    "Vault": "uu:Vault",
+    "ResearchSpace": "uu:ResearchSpace",
+    "DataRequest": "uu:DataRequest",
+    "requestId": "uu:requestId"
+  },
+  "@type": "Organization",
+  "name": "Utrecht University",
+  "url": "https://www.uu.nl/en",
+  "sameAs": [
+    "https://github.com/UtrechtUniversity",
+    "https://www.linkedin.com/school/utrecht-university/",
+    "https://dspace.library.uu.nl/"
+  ]
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/utrecht/main/json-schema/utrecht-yoda-error-schema.json",
+  "title": "Yoda API Error Result",
+  "description": "Error response envelope (result_error) returned by Yoda API operations on HTTP 400 / 500, as defined in the Yoda ruleset OpenAPI specification.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Holds an error ID."
+    },
+    "status_info": {
+      "type": "string",
+      "description": "Holds a human-readable error description."
+    },
+    "data": {
+      "type": ["object", "null"],
+      "description": "Empty on error.",
+      "nullable": true
+    }
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-structure.org/meta/core/v0",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/utrecht/main/json-structure/utrecht-yoda-error-structure.json",
+  "name": "YodaErrorResult",
+  "description": "JSON Structure for the Yoda API error envelope (result_error) returned on HTTP 400 and 500 responses.",
+  "type": "object",
+  "properties": {
+    "status": {
+      "type": "string",
+      "description": "Holds an error ID."
+    },
+    "status_info": {
+      "type": "string",
+      "description": "Holds a human-readable error description."
+    },
+    "data": {
+      "type": ["object", "null"],
+      "description": "Empty on error."
+    }
+  },
+  "required": ["status", "status_info"]
+}

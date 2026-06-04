@@ -1,0 +1,20 @@
+{
+  "operation": "POST /datarequest_submit",
+  "description": "Submit a data request in the Yoda Datarequest module. Based on the Yoda datarequest API OpenAPI specification (api_datarequest.json).",
+  "request": {
+    "data": {
+      "introduction": "Request for access to anonymized cohort data.",
+      "researchContext": {
+        "title": "Longitudinal health outcomes study"
+      }
+    },
+    "draft": false
+  },
+  "response": {
+    "status": "ok",
+    "status_info": null,
+    "data": {
+      "requestId": "0123-4567-89ab-cdef"
+    }
+  }
+}

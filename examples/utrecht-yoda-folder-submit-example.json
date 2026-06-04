@@ -1,0 +1,18 @@
+{
+  "operation": "POST /folder_submit",
+  "description": "Submit a research folder for review in Yoda. Based on the Yoda core API OpenAPI specification (api_core.json).",
+  "request": {
+    "coll": "/tempZone/home/research-initial/study-2026",
+    "delete_research_copy": false
+  },
+  "response": {
+    "status": "ok",
+    "status_info": null,
+    "data": null
+  },
+  "error_response": {
+    "status": "PermissionDenied",
+    "status_info": "User is not permitted to submit this folder.",
+    "data": null
+  }
+}

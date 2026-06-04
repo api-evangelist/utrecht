@@ -1,0 +1,75 @@
+extends: []
+formats:
+  - oas3
+documentationUrl: https://utrechtuniversity.github.io/yoda/design/api/
+rules:
+  yoda-info-contact:
+    description: Yoda API spec should declare a contact email.
+    severity: warn
+    given: $.info
+    then:
+      field: contact
+      function: truthy
+
+  yoda-server-defined:
+    description: At least one server URL must be declared.
+    severity: error
+    given: $.servers
+    then:
+      function: length
+      functionOptions:
+        min: 1
+
+  yoda-operations-are-post:
+    description: Yoda API operations are exposed exclusively as HTTP POST.
+    severity: warn
+    given: $.paths[*]
+    then:
+      field: post
+      function: truthy
+
+  yoda-operation-has-summary:
+    description: Every Yoda operation should carry a summary.
+    severity: warn
+    given: $.paths[*].post
+    then:
+      field: summary
+      function: truthy
+
+  yoda-operation-tagged:
+    description: Every Yoda operation should be tagged to its functional area (folder, vault, group, datarequest, etc.).
+    severity: warn
+    given: $.paths[*].post
+    then:
+      field: tags
+      function: truthy
+
+  yoda-result-envelope:
+    description: Successful responses should use the standard status/status_info/data envelope.
+    severity: info
+    given: $.paths[*].post.responses.200.content.application/json.schema.properties
+    then:
+      - field: status
+        function: truthy
+      - field: status_info
+        function: truthy
+      - field: data
+        function: truthy
+
+  yoda-error-responses:
+    description: Operations should document 400 and 500 error responses.
+    severity: warn
+    given: $.paths[*].post.responses
+    then:
+      - field: '400'
+        function: truthy
+      - field: '500'
+        function: truthy
+
+  yoda-security-required:
+    description: Yoda API requires cookie or basic authentication.
+    severity: warn
+    given: $
+    then:
+      field: security
+      function: truthy

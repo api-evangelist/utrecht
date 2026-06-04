@@ -1,0 +1,83 @@
+vocabulary:
+  name: Utrecht University Yoda API Vocabulary
+  description: >-
+    Controlled vocabulary of the principal terms and concepts found in the
+    Utrecht University Yoda research data management HTTP API (Core and
+    Datarequest modules) and the Utrecht University Library OAI-PMH repository
+    interface. Derived from the published Yoda ruleset OpenAPI specifications
+    and the DSpace OAI-PMH endpoint.
+  version: "1.0.0"
+  terms:
+    - term: Yoda
+      definition: >-
+        Open-source, iRODS-based research data management platform developed by
+        Utrecht University for depositing, sharing, publishing, and preserving
+        research data.
+      tags: [platform, research-data]
+    - term: iRODS
+      definition: >-
+        Integrated Rule-Oriented Data System; the data grid middleware on which
+        Yoda is built and accessed via iCommands and python-irodsclient.
+      tags: [infrastructure, protocol]
+    - term: Collection
+      definition: >-
+        An iRODS collection (folder) holding data objects within a Yoda research
+        or vault space; referenced by the "coll" parameter in many operations.
+      tags: [data-model]
+    - term: Research space
+      definition: >-
+        The working area in Yoda where researchers actively add, move, and edit
+        data before submission.
+      tags: [data-model, workflow]
+    - term: Vault
+      definition: >-
+        The Yoda preservation area where accepted data packages are archived,
+        published, and retained immutably.
+      tags: [data-model, preservation]
+    - term: Folder submit
+      definition: >-
+        Workflow action (folder_submit) that submits a research folder for
+        datamanager review prior to vault ingestion.
+      tags: [workflow, operation]
+    - term: Data request
+      definition: >-
+        A formal request, managed by the Yoda datarequest module, to gain access
+        to data held in the platform.
+      tags: [datarequest, workflow]
+    - term: Result envelope
+      definition: >-
+        The uniform response object with status, status_info, and data fields
+        returned by every Yoda API operation.
+      tags: [api, response]
+    - term: status
+      definition: Status identifier in the result envelope; "ok" on success or an error ID.
+      tags: [api, field]
+    - term: status_info
+      definition: Human-readable status or error description in the result envelope.
+      tags: [api, field]
+    - term: Token
+      definition: >-
+        Personal access token generated via token_generate for authenticating
+        programmatic Yoda API access.
+      tags: [auth, api]
+    - term: Provenance log
+      definition: >-
+        Audit trail (provenance_log) recording the lifecycle actions performed
+        on a data package.
+      tags: [metadata, audit]
+    - term: OAI-PMH
+      definition: >-
+        Open Archives Initiative Protocol for Metadata Harvesting; the standard
+        used by the Utrecht University Library DSpace repository to expose
+        publication metadata.
+      tags: [library, protocol, metadata]
+    - term: DSpace
+      definition: >-
+        The institutional repository software (DSpace 9) running the Utrecht
+        University Repository and serving its OAI-PMH interface.
+      tags: [library, repository]
+    - term: Datamanager
+      definition: >-
+        Yoda role responsible for reviewing submitted folders and accepting or
+        rejecting them into the vault.
+      tags: [role, workflow]
