@@ -77,6 +77,12 @@ apis:
       - type: x-rules
         url: rules/utrecht-rules.yml
 common:
+  - type: VulnerabilityDisclosure
+    url: security/utrecht-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/utrecht-domain-security.yml
+  - type: Authentication
+    url: authentication/utrecht-authentication.yml
   - type: Website
     url: https://www.uu.nl/en
   - type: GitHub

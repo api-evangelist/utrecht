@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/utrecht-yoda-core.yaml, openapi/utrecht-yoda-datarequest.yaml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - cookie
+schemes:
+- name: cookieAuth
+  type: apiKey
+  in: cookie
+  parameter: yoda_session
+  sources:
+  - openapi/utrecht-yoda-core.yaml
+  - openapi/utrecht-yoda-datarequest.yaml
+- name: basicAuth
+  type: http
+  scheme: basic
+  sources:
+  - openapi/utrecht-yoda-core.yaml
+  - openapi/utrecht-yoda-datarequest.yaml
