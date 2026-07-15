@@ -77,6 +77,8 @@ apis:
       - type: x-rules
         url: rules/utrecht-rules.yml
 common:
+  - type: AgenticAccess
+    url: agentic-access/utrecht-agentic-access.yml
   - type: VulnerabilityDisclosure
     url: security/utrecht-vulnerability-disclosure.yml
   - type: DomainSecurity
