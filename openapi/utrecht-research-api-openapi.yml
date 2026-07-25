@@ -1,0 +1,663 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin research API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: research
+paths:
+  /research_folder_add:
+    post:
+      tags:
+      - research
+      summary: 'Add a new folder to a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              - new_folder_name
+              properties:
+                coll:
+                  type: string
+                  description: Collection to create new folder in
+                  default: null
+                  nullable: false
+                new_folder_name:
+                  type: string
+                  description: Name of the new folder
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_folder_copy:
+    post:
+      tags:
+      - research
+      summary: 'Copy a folder in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - folder_path
+              - new_folder_path
+              properties:
+                folder_path:
+                  type: string
+                  description: Path to the folder to copy
+                  default: null
+                  nullable: false
+                new_folder_path:
+                  type: string
+                  description: Path to the new copy of the folder
+                  default: null
+                  nullable: false
+                overwrite:
+                  type: boolean
+                  description: Overwrite folder if it already exists
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_folder_move:
+    post:
+      tags:
+      - research
+      summary: 'Move a folder in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - folder_path
+              - new_folder_path
+              properties:
+                folder_path:
+                  type: string
+                  description: Path to the folder to move
+                  default: null
+                  nullable: false
+                new_folder_path:
+                  type: string
+                  description: Path to the new folder
+                  default: null
+                  nullable: false
+                overwrite:
+                  type: boolean
+                  description: Overwrite folder if it already exists
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_folder_rename:
+    post:
+      tags:
+      - research
+      summary: 'Rename an existing research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - new_folder_name
+              - coll
+              - org_folder_name
+              properties:
+                new_folder_name:
+                  type: string
+                  description: New folder name
+                  default: null
+                  nullable: false
+                coll:
+                  type: string
+                  description: Parent collection of folder
+                  default: null
+                  nullable: false
+                org_folder_name:
+                  type: string
+                  description: Current name of the folder
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_folder_delete:
+    post:
+      tags:
+      - research
+      summary: 'Delete a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              - folder_name
+              properties:
+                coll:
+                  type: string
+                  description: Parent collection of folder to delete
+                  default: null
+                  nullable: false
+                folder_name:
+                  type: string
+                  description: Name of folder to delete
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_list_temporary_files:
+    post:
+      tags:
+      - research
+      summary: 'Get list of temporary files to be cleaned up.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Parent collection of folder to delete
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_file_copy:
+    post:
+      tags:
+      - research
+      summary: 'Copy a file in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - filepath
+              - new_filepath
+              properties:
+                filepath:
+                  type: string
+                  description: Path to the file to copy
+                  default: null
+                  nullable: false
+                new_filepath:
+                  type: string
+                  description: Path to the new copy of the file
+                  default: null
+                  nullable: false
+                overwrite:
+                  type: boolean
+                  description: Overwrite file if it already exists
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_file_rename:
+    post:
+      tags:
+      - research
+      summary: 'Rename a file in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - new_file_name
+              - coll
+              - org_file_name
+              properties:
+                new_file_name:
+                  type: string
+                  description: New file name
+                  default: null
+                  nullable: false
+                coll:
+                  type: string
+                  description: Parent collection of file
+                  default: null
+                  nullable: false
+                org_file_name:
+                  type: string
+                  description: Current name of the file
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_file_move:
+    post:
+      tags:
+      - research
+      summary: 'Move a file in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - filepath
+              - new_filepath
+              properties:
+                filepath:
+                  type: string
+                  description: Path to the file to move
+                  default: null
+                  nullable: false
+                new_filepath:
+                  type: string
+                  description: Path to the new location of the file
+                  default: null
+                  nullable: false
+                overwrite:
+                  type: boolean
+                  description: Overwrite file if it already exists
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_file_delete:
+    post:
+      tags:
+      - research
+      summary: 'Delete a file in a research folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              - file_name
+              properties:
+                coll:
+                  type: string
+                  description: Parent collection of file to delete
+                  default: null
+                  nullable: false
+                file_name:
+                  type: string
+                  description: Name of file to delete
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_system_metadata:
+    post:
+      tags:
+      - research
+      summary: 'Return collection statistics as JSON.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Research collection
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_collection_details:
+    post:
+      tags:
+      - research
+      summary: 'Return details of a research collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: Path to research collection
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /research_manifest:
+    post:
+      tags:
+      - research
+      summary: 'Produce a manifest of data objects in a collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Parent collection of data objects to include
+                  default: null
+                  nullable: false
+                empty_colls:
+                  type: boolean
+                  description: Include empty collections in manifest
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

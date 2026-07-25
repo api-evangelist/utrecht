@@ -1,0 +1,138 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin meta_form API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: meta_form
+paths:
+  /meta_form_load:
+    post:
+      tags:
+      - meta_form
+      summary: 'Retrieve all information required to load a metadata form in either the research or vault space.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection to retrieve all information required to load a metadata form from
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /meta_form_save:
+    post:
+      tags:
+      - meta_form
+      summary: 'Validate and store JSON metadata for a given collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              - metadata
+              properties:
+                coll:
+                  type: string
+                  description: Collection to save metadata on
+                  default: null
+                  nullable: false
+                metadata:
+                  type: object
+                  description: Metadata to save
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

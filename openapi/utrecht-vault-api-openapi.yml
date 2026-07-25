@@ -1,0 +1,693 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin vault API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: vault
+paths:
+  /vault_submit:
+    post:
+      tags:
+      - vault
+      summary: 'Submit data package for publication.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to submit
+                  default: null
+                  nullable: false
+                previous_version:
+                  type: string
+                  description: Path to previous version of data package in the vault
+                  default: None
+                  nullable: true
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_approve:
+    post:
+      tags:
+      - vault
+      summary: 'Approve data package for publication.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to approve
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_cancel:
+    post:
+      tags:
+      - vault
+      summary: 'Cancel submit of data package.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to cancel submit
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_depublish:
+    post:
+      tags:
+      - vault
+      summary: 'Depublish data package.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to depublish
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_republish:
+    post:
+      tags:
+      - vault
+      summary: 'Republish data package.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to republish
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_copy_to_research:
+    post:
+      tags:
+      - vault
+      summary: 'Copy data package from vault to research space.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll_origin
+              - coll_target
+              properties:
+                coll_origin:
+                  type: string
+                  description: Collection of data package to copy
+                  default: null
+                  nullable: false
+                coll_target:
+                  type: string
+                  description: Collection to copy data package to
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_preservable_formats_lists:
+    post:
+      tags:
+      - vault
+      summary: 'Retrieve lists of preservable file formats on the system.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_unpreservable_files:
+    post:
+      tags:
+      - vault
+      summary: 'Retrieve list of unpreservable file formats in a collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              - list_name
+              properties:
+                coll:
+                  type: string
+                  description: Collection of folder to check
+                  default: null
+                  nullable: false
+                list_name:
+                  type: string
+                  description: Name of preservable file format list
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_system_metadata:
+    post:
+      tags:
+      - vault
+      summary: 'Return system metadata of a vault collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Path to data package
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_collection_details:
+    post:
+      tags:
+      - vault
+      summary: 'Return details of a vault collection.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: Path to data package
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_get_package_by_reference:
+    post:
+      tags:
+      - vault
+      summary: 'Return path to data package with provided reference (UUID4).
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - reference
+              properties:
+                reference:
+                  type: string
+                  description: Data Package Reference (UUID4)
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_get_landingpage_data:
+    post:
+      tags:
+      - vault
+      summary: 'Retrieve landingpage data of data package.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection to retrieve landingpage data from
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_get_publication_terms:
+    post:
+      tags:
+      - vault
+      summary: Retrieve the publication terms.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /grant_read_access_research_group:
+    post:
+      tags:
+      - vault
+      summary: 'Grant read rights of research group for datapackage in vault.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to remove read rights from
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /revoke_read_access_research_group:
+    post:
+      tags:
+      - vault
+      summary: 'Revoke read rights of research group for datapackage in vault.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Collection of data package to remove read rights from
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /vault_get_published_packages:
+    post:
+      tags:
+      - vault
+      summary: 'Get the path and DOI of latest versions of published data package in a vault.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - path
+              properties:
+                path:
+                  type: string
+                  description: Path of vault with data packages
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

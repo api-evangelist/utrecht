@@ -1,0 +1,163 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin notifications API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: notifications
+paths:
+  /notifications_load:
+    post:
+      tags:
+      - notifications
+      summary: 'Load user notifications.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sort_order:
+                  type: string
+                  description: Sort order of notifications on timestamp ("asc" or "desc", default "desc")
+                  default: '''desc'''
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /notifications_dismiss:
+    post:
+      tags:
+      - notifications
+      summary: 'Dismiss user notification.
+
+        :param identifier: Identifier of notification message'
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - identifier
+              properties:
+                identifier:
+                  type: string
+                  description: Identifier of notification message
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /notifications_dismiss_all:
+    post:
+      tags:
+      - notifications
+      summary: 'Dismiss all user notifications.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

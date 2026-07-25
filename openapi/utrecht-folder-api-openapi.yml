@@ -1,0 +1,335 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin folder API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: folder
+paths:
+  /folder_lock:
+    post:
+      tags:
+      - folder
+      summary: 'Lock a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to lock
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_unlock:
+    post:
+      tags:
+      - folder
+      summary: 'Unlock a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to unlock
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_submit:
+    post:
+      tags:
+      - folder
+      summary: 'Submit a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to submit
+                  default: null
+                  nullable: false
+                delete_research_copy:
+                  type: boolean
+                  description: Whether to delete copy in research space
+                  default: 'False'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_unsubmit:
+    post:
+      tags:
+      - folder
+      summary: 'Unsubmit a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to unsubmit
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_accept:
+    post:
+      tags:
+      - folder
+      summary: 'Accept a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to accept
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_reject:
+    post:
+      tags:
+      - folder
+      summary: 'Reject a folder.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: Folder to reject
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /folder_get_locks:
+    post:
+      tags:
+      - folder
+      summary: Return a list of locks on a collection.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - coll
+              properties:
+                coll:
+                  type: string
+                  description: (undocumented)
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

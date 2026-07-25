@@ -1,0 +1,736 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin groups API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: groups
+paths:
+  /group_get_user_role:
+    post:
+      tags:
+      - groups
+      summary: 'Get role of user in group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - group_name
+              properties:
+                username:
+                  type: string
+                  description: User to return type of
+                  default: null
+                  nullable: false
+                group_name:
+                  type: string
+                  description: Group name of user
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_data:
+    post:
+      tags:
+      - groups
+      summary: 'Retrieve group data as hierarchy for user.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_process_csv:
+    post:
+      tags:
+      - groups
+      summary: 'Process contents of CSV file containing group definitions.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - csv_header_and_data
+              - allow_update
+              - delete_users
+              properties:
+                csv_header_and_data:
+                  type: string
+                  description: CSV data holding a head conform description and the actual row data
+                  default: null
+                  nullable: false
+                allow_update:
+                  type: boolean
+                  description: Allow updates in groups
+                  default: null
+                  nullable: false
+                delete_users:
+                  type: boolean
+                  description: Allow for deleting of users from groups
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_categories:
+    post:
+      tags:
+      - groups
+      summary: Retrieve category list.
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties: {}
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_subcategories:
+    post:
+      tags:
+      - groups
+      summary: 'Retrieve subcategory list.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - category
+              properties:
+                category:
+                  type: string
+                  description: Category to retrieve subcategories of
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_search_users:
+    post:
+      tags:
+      - groups
+      summary: ''
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - pattern
+              properties:
+                pattern:
+                  type: string
+                  description: (undocumented)
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_exists:
+    post:
+      tags:
+      - groups
+      summary: 'Check if group exists.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - group_name
+              properties:
+                group_name:
+                  type: string
+                  description: Name of the group to check for existence
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_create:
+    post:
+      tags:
+      - groups
+      summary: 'Create a new group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - group_name
+              - category
+              - subcategory
+              - schema_id
+              - expiration_date
+              - description
+              - data_classification
+              - sram_co
+              properties:
+                group_name:
+                  type: string
+                  description: Name of the group to create
+                  default: null
+                  nullable: false
+                category:
+                  type: string
+                  description: Category of the group to create
+                  default: null
+                  nullable: false
+                subcategory:
+                  type: string
+                  description: Subcategory of the group to create
+                  default: null
+                  nullable: false
+                schema_id:
+                  type: string
+                  description: Schema-id for the group to be created
+                  default: null
+                  nullable: false
+                expiration_date:
+                  type: string
+                  description: Retention period for the group
+                  default: null
+                  nullable: false
+                description:
+                  type: string
+                  description: Description of the group to create
+                  default: null
+                  nullable: false
+                data_classification:
+                  type: string
+                  description: Data classification of the group to create
+                  default: null
+                  nullable: false
+                sram_co:
+                  type: boolean
+                  description: If True, create a SRAM CO
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_update:
+    post:
+      tags:
+      - groups
+      summary: 'Update group property.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - group_name
+              - property_name
+              - property_value
+              properties:
+                group_name:
+                  type: string
+                  description: Name of the group to update property of
+                  default: null
+                  nullable: false
+                property_name:
+                  type: string
+                  description: Name of the property to update
+                  default: null
+                  nullable: false
+                property_value:
+                  type: string
+                  description: Value of the property to update
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_delete:
+    post:
+      tags:
+      - groups
+      summary: 'Delete a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - group_name
+              properties:
+                group_name:
+                  type: string
+                  description: Name of the group to delete
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_get_description:
+    post:
+      tags:
+      - groups
+      summary: 'Retrieve description of a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - group_name
+              properties:
+                group_name:
+                  type: string
+                  description: Name of the group
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_user_is_member:
+    post:
+      tags:
+      - groups
+      summary: 'Check if user is member of a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - group_name
+              properties:
+                username:
+                  type: string
+                  description: Name of the user
+                  default: null
+                  nullable: false
+                group_name:
+                  type: string
+                  description: Name of the group
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_user_add:
+    post:
+      tags:
+      - groups
+      summary: 'Add a user to a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - group_name
+              properties:
+                username:
+                  type: string
+                  description: Name of the user
+                  default: null
+                  nullable: false
+                group_name:
+                  type: string
+                  description: Name of the group
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_user_update_role:
+    post:
+      tags:
+      - groups
+      summary: 'Update role of a user in a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - group_name
+              - new_role
+              properties:
+                username:
+                  type: string
+                  description: Name of the user
+                  default: null
+                  nullable: false
+                group_name:
+                  type: string
+                  description: Name of the group
+                  default: null
+                  nullable: false
+                new_role:
+                  type: string
+                  description: New role of the user
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /group_remove_user_from_group:
+    post:
+      tags:
+      - groups
+      summary: 'Remove a user from a group.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - username
+              - group_name
+              properties:
+                username:
+                  type: string
+                  description: Name of the user
+                  default: null
+                  nullable: false
+                group_name:
+                  type: string
+                  description: Name of the group
+                  default: null
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

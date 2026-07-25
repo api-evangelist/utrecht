@@ -4,49 +4,15 @@ info:
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda datarequest API
+  title: Yoda core admin datarequest API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
 security:
 - cookieAuth: []
 - basicAuth: []
-components:
-  schemas:
-    result_error:
-      type: object
-      properties:
-        status:
-          type: string
-          description: Holds an error ID
-        status_info:
-          type: string
-          description: Holds a human-readable error description
-        data:
-          description: empty
-          nullable: true
-          type: object
-  securitySchemes:
-    cookieAuth:
-      in: cookie
-      type: apiKey
-      name: yoda_session
-    basicAuth:
-      type: http
-      scheme: basic
-  responses:
-    status_400:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/result_error'
-    status_500:
-      description: Internal error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/result_error'
+tags:
+- name: datarequest
 paths:
   /datarequest_action_permitted:
     post:
@@ -225,8 +191,7 @@ paths:
     post:
       tags:
       - datarequest
-      summary: "Get paginated datarequests, including size/modify date information.\n                \
-        \    show non-archived data requests\n                    be reviewed\n"
+      summary: "Get paginated datarequests, including size/modify date information.\n                    show non-archived data requests\n                    be reviewed\n"
       requestBody:
         required: true
         content:
@@ -261,8 +226,7 @@ paths:
                   nullable: false
                 dacrequests:
                   type: boolean
-                  description: If true, show a DAC member's own data requests (instead of data requests
-                    to
+                  description: If true, show a DAC member's own data requests (instead of data requests to
                   default: 'True'
                   nullable: false
       responses:
@@ -1523,3 +1487,39 @@ paths:
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic

@@ -1,0 +1,281 @@
+openapi: 3.0.0
+info:
+  description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
+  contact:
+    email: l.r.westerhof@uu.nl
+  version: 2.1.0
+  title: Yoda core admin browse API
+servers:
+- url: https://portal.yoda.test/api
+  description: Local Yoda development server
+security:
+- cookieAuth: []
+- basicAuth: []
+tags:
+- name: browse
+paths:
+  /browse_folder:
+    post:
+      tags:
+      - browse
+      summary: 'Get paginated collection contents, including size/modify date information.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coll:
+                  type: string
+                  description: Collection to get paginated contents of
+                  default: '''/'''
+                  nullable: false
+                sort_on:
+                  type: string
+                  description: Column to sort on ('name', 'modified' or size)
+                  default: '''name'''
+                  nullable: false
+                sort_order:
+                  type: string
+                  description: Column sort order ('asc' or 'desc')
+                  default: '''asc'''
+                  nullable: false
+                offset:
+                  type: integer
+                  description: Offset to start browsing from
+                  default: '0'
+                  nullable: false
+                limit:
+                  type: integer
+                  description: Limit number of results
+                  default: '10'
+                  nullable: false
+                space:
+                  type: string
+                  description: Space the collection is in
+                  default: pathutil.Space.OTHER.value
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /browse_collections:
+    post:
+      tags:
+      - browse
+      summary: 'Get paginated collection contents, including size/modify date information.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                coll:
+                  type: string
+                  description: Collection to get paginated contents of
+                  default: '''/'''
+                  nullable: false
+                sort_on:
+                  type: string
+                  description: Column to sort on ('name', 'modified' or size)
+                  default: '''name'''
+                  nullable: false
+                sort_order:
+                  type: string
+                  description: Column sort order ('asc' or 'desc')
+                  default: '''asc'''
+                  nullable: false
+                offset:
+                  type: integer
+                  description: Offset to start browsing from
+                  default: '0'
+                  nullable: false
+                limit:
+                  type: integer
+                  description: Limit number of results
+                  default: '10'
+                  nullable: false
+                space:
+                  type: string
+                  description: Space the collection is in
+                  default: pathutil.Space.OTHER.value
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /search:
+    post:
+      tags:
+      - browse
+      summary: 'Get paginated search results, including size/modify date/location information.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              required:
+              - search_string
+              properties:
+                search_string:
+                  type: string
+                  description: String used to search
+                  default: null
+                  nullable: false
+                search_type:
+                  type: string
+                  description: Search type ('filename', 'folder', 'metadata', 'status')
+                  default: '''filename'''
+                  nullable: false
+                sort_on:
+                  type: string
+                  description: Column to sort on ('name', 'modified' or size)
+                  default: '''name'''
+                  nullable: false
+                sort_order:
+                  type: string
+                  description: Column sort order ('asc' or 'desc')
+                  default: '''asc'''
+                  nullable: false
+                offset:
+                  type: integer
+                  description: Offset to start browsing from
+                  default: '0'
+                  nullable: false
+                limit:
+                  type: integer
+                  description: Limit number of results
+                  default: '10'
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+  /load_text_obj:
+    post:
+      tags:
+      - browse
+      summary: 'Retrieve a text file (as a string) in either the research, deposit, or vault space.
+
+        '
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                file_path:
+                  type: string
+                  description: Full file path of file to load
+                  default: '''/'''
+                  nullable: false
+      responses:
+        '200':
+          description: Success
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: string
+                  status_info:
+                    type: string
+                    nullable: true
+                  data:
+                    nullable: true
+        '400':
+          $ref: '#/components/responses/status_400'
+        '500':
+          $ref: '#/components/responses/status_500'
+components:
+  responses:
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+  schemas:
+    result_error:
+      type: object
+      properties:
+        status:
+          type: string
+          description: Holds an error ID
+        status_info:
+          type: string
+          description: Holds a human-readable error description
+        data:
+          description: empty
+          nullable: true
+          type: object
+  securitySchemes:
+    cookieAuth:
+      in: cookie
+      type: apiKey
+      name: yoda_session
+    basicAuth:
+      type: http
+      scheme: basic
