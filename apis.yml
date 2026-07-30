@@ -13,9 +13,22 @@ description: >-
   API developer portal; most administrative and identity systems are gated behind
   institutional SolisID/SSO.
 type: Index
+accessModel:
+  pricing: free
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Free · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/utrecht.png
 url: https://raw.githubusercontent.com/api-evangelist/utrecht/refs/heads/main/apis.yml
 tags:
   - Education
@@ -30,52 +43,510 @@ created: '2026-06-03'
 modified: '2026-06-03'
 specificationVersion: '0.19'
 apis:
-  - aid: utrecht:repository-oai
-    name: Utrecht University Repository OAI-PMH
-    description: >-
-      OAI-PMH metadata harvesting interface for the Utrecht University Library
-      DSpace institutional repository, exposing publication and resource metadata
-      of Utrecht University and UMC Utrecht researchers. Confirmed live as a
-      DSpace 9 instance responding to standard OAI-PMH verbs (Identify,
-      ListRecords, etc.).
-    humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-    baseURL: https://dspace.library.uu.nl/server/oai/request
-    tags: [ Library, Repository, OAI-PMH, Metadata, Open Access, Research ]
-    properties:
-      - type: Documentation
-        url: https://www.uu.nl/en/university-library/utrecht-university-repository
-      - type: OpenAIRE
-        url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
-  - aid: utrecht:yoda
-    name: Yoda Research Data Management Platform
-    description: >-
-      Yoda is an open-source, iRODS-based research data management service
-      developed by Utrecht University for depositing, sharing, publishing, and
-      preserving research data. It is programmatically accessible via the iRODS
-      protocol (iCommands / python-irodsclient) and exposes an HTTP API layer in
-      its open-source ruleset. Source and technical documentation are public;
-      live data access is gated behind institutional credentials.
-    humanURL: https://utrechtuniversity.github.io/yoda/
-    tags: [ Research Data, iRODS, Data Management, Open Source ]
-    properties:
-      - type: Documentation
-        url: https://utrechtuniversity.github.io/yoda/
-      - type: GitHub
-        url: https://github.com/UtrechtUniversity/yoda
-      - type: SourceCode
-        url: https://github.com/UtrechtUniversity/yoda-ruleset
-      - type: OpenAPI
-        url: openapi/utrecht-yoda-core.yaml
-      - type: OpenAPI
-        url: openapi/utrecht-yoda-datarequest.yaml
-      - type: JSONSchema
-        url: json-schema/utrecht-yoda-result-schema.json
-      - type: x-vocabulary
-        url: vocabulary/utrecht-vocabulary.yml
-      - type: x-json-ld
-        url: json-ld/utrecht-context.jsonld
-      - type: x-rules
-        url: rules/utrecht-rules.yml
+- aid: utrecht:repository-oai
+  name: Utrecht University Repository OAI-PMH
+  description: >-
+    OAI-PMH metadata harvesting interface for the Utrecht University Library DSpace institutional repository,
+    exposing publication and resource metadata of Utrecht University and UMC Utrecht researchers. Confirmed
+    live as a DSpace 9 instance responding to standard OAI-PMH verbs (Identify, ListRecords, etc.).
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - Library
+  - Repository
+  - OAI-PMH
+  - Metadata
+  - Open Access
+  - Research
+  properties:
+  - type: Documentation
+    url: https://www.uu.nl/en/university-library/utrecht-university-repository
+  - type: OpenAIRE
+    url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
+- aid: utrecht:utrecht-admin-api
+  name: Utrecht University admin API
+  description: The admin API from Utrecht University — 1 operation(s) for admin.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - admin
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-admin-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-browse-api
+  name: Utrecht University browse API
+  description: The browse API from Utrecht University — 4 operation(s) for browse.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - browse
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-browse-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-data-access-token-api
+  name: Utrecht University data_access_token API
+  description: >-
+    The data_access_token API from Utrecht University — 4 operation(s) for data_access_token.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - data_access_token
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-data-access-token-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-datarequest-api
+  name: Utrecht University datarequest API
+  description: The datarequest API from Utrecht University — 34 operation(s) for datarequest.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - datarequest
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-datarequest-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-folder-api
+  name: Utrecht University folder API
+  description: The folder API from Utrecht University — 7 operation(s) for folder.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - folder
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-folder-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-groups-api
+  name: Utrecht University groups API
+  description: The groups API from Utrecht University — 15 operation(s) for groups.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - groups
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-groups-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-meta-api
+  name: Utrecht University meta API
+  description: The meta API from Utrecht University — 2 operation(s) for meta.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - meta
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-meta-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-meta-form-api
+  name: Utrecht University meta_form API
+  description: The meta_form API from Utrecht University — 2 operation(s) for meta_form.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - meta_form
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-meta-form-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-notifications-api
+  name: Utrecht University notifications API
+  description: The notifications API from Utrecht University — 3 operation(s) for notifications.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - notifications
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-notifications-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-provenance-api
+  name: Utrecht University provenance API
+  description: The provenance API from Utrecht University — 1 operation(s) for provenance.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - provenance
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-provenance-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-publication-troubleshoot-api
+  name: Utrecht University publication_troubleshoot API
+  description: >-
+    The publication_troubleshoot API from Utrecht University — 1 operation(s) for publication_troubleshoot.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - publication_troubleshoot
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-publication-troubleshoot-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-research-api
+  name: Utrecht University research API
+  description: The research API from Utrecht University — 13 operation(s) for research.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - research
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-research-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-revisions-api
+  name: Utrecht University revisions API
+  description: The revisions API from Utrecht University — 3 operation(s) for revisions.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - revisions
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-revisions-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-schema-api
+  name: Utrecht University schema API
+  description: The schema API from Utrecht University — 1 operation(s) for schema.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - schema
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-schema-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-schema-transformation-api
+  name: Utrecht University schema_transformation API
+  description: >-
+    The schema_transformation API from Utrecht University — 1 operation(s) for schema_transformation.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - schema_transformation
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-schema-transformation-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-settings-api
+  name: Utrecht University settings API
+  description: The settings API from Utrecht University — 2 operation(s) for settings.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - settings
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-settings-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-stats-api
+  name: Utrecht University stats API
+  description: The stats API from Utrecht University — 4 operation(s) for stats.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - stats
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-stats-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-vault-api
+  name: Utrecht University vault API
+  description: The vault API from Utrecht University — 16 operation(s) for vault.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - vault
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-vault-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-vault-archive-api
+  name: Utrecht University vault_archive API
+  description: The vault_archive API from Utrecht University — 3 operation(s) for vault_archive.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - vault_archive
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-vault-archive-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
+- aid: utrecht:utrecht-vault-deaccession-api
+  name: Utrecht University vault_deaccession API
+  description: >-
+    The vault_deaccession API from Utrecht University — 4 operation(s) for vault_deaccession.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/oai/request
+  tags:
+  - vault_deaccession
+  properties:
+  - type: OpenAPI
+    url: openapi/utrecht-vault-deaccession-api-openapi.yml
+  - type: Documentation
+    url: https://utrechtuniversity.github.io/yoda/
+  - type: GitHub
+    url: https://github.com/UtrechtUniversity/yoda
+  - type: SourceCode
+    url: https://github.com/UtrechtUniversity/yoda-ruleset
+  - type: JSONSchema
+    url: json-schema/utrecht-yoda-result-schema.json
+  - type: x-vocabulary
+    url: vocabulary/utrecht-vocabulary.yml
+  - type: x-json-ld
+    url: json-ld/utrecht-context.jsonld
+  - type: x-rules
+    url: rules/utrecht-rules.yml
 common:
   - type: AgenticAccess
     url: agentic-access/utrecht-agentic-access.yml
