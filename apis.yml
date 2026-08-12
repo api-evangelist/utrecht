@@ -548,6 +548,9 @@ apis:
   - type: x-rules
     url: rules/utrecht-rules.yml
 common:
+  - type: License
+    name: GPL-3.0
+    url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/LICENSE
   - type: AgenticAccess
     url: agentic-access/utrecht-agentic-access.yml
   - type: VulnerabilityDisclosure
