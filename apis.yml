@@ -41,7 +41,7 @@ tags:
   - Open Source
 created: '2026-06-03'
 modified: '2026-06-03'
-specificationVersion: '0.19'
+specificationVersion: '0.23'
 apis:
 - aid: utrecht:repository-oai
   name: Utrecht University Repository OAI-PMH
