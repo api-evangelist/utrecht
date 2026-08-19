@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin vault_archive API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vault_archive",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request to archive vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_archive",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request to archive vault data package.\n"
+        },
+        {
+          "info": {
+            "name": "Request archival status of vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_archival_status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request archival status of vault data package.\n"
+        },
+        {
+          "info": {
+            "name": "Request to unarchive an archived vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_extract",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request to unarchive an archived vault data package.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

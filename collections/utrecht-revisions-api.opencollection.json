@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin revisions API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "revisions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Search revisions of a file in a research folder and return list of corresponding revisions.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/revisions_search_on_filename",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search revisions of a file in a research folder and return list of corresponding revisions.\n"
+        },
+        {
+          "info": {
+            "name": "Get list revisions of a file in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/revisions_list",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get list revisions of a file in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Copy selected revision to target collection with given name.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/revisions_restore",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy selected revision to target collection with given name.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

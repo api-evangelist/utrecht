@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin data_access_token API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "data_access_token",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Generates a token for user authentication.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/token_generate",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generates a token for user authentication.\n"
+        },
+        {
+          "info": {
+            "name": "Loads valid tokens of user.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/token_load",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Loads valid tokens of user.\n"
+        },
+        {
+          "info": {
+            "name": "Deletes a token of the user.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/token_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes a token of the user.\n"
+        },
+        {
+          "info": {
+            "name": "Deletes expired tokens of current user\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/token_delete_expired",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Deletes expired tokens of current user\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

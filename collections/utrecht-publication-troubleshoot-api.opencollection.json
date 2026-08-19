@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin publication_troubleshoot API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "publication_troubleshoot",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wrapper for the batch script for troubleshooting published data packages.\nRuns a subset of the tests since \"technicaladmin\" is usually more restricted than \"rods\".\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/batch_troubleshoot_published_data_packages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wrapper for the batch script for troubleshooting published data packages.\nRuns a subset of the tests since \"technicaladmin\" is usually more restricted than \"rods\".\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

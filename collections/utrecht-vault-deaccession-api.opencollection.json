@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin vault_deaccession API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vault_deaccession",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Request deaccession status of vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_deaccession_status",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request deaccession status of vault data package.\n"
+        },
+        {
+          "info": {
+            "name": "Request to deaccession a vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_request_deaccession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Request to deaccession a vault data package.\n"
+        },
+        {
+          "info": {
+            "name": "Cancel a request to deaccession a vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_cancel_deaccession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel a request to deaccession a vault data package.\n"
+        },
+        {
+          "info": {
+            "name": "Approve request to deaccession a vault data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_approve_deaccession",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve request to deaccession a vault data package.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

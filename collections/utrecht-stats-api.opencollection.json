@@ -1,0 +1,86 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin stats API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "stats",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get paginated group data groupname / size\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/resource_browse_group_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get paginated group data groupname / size\n"
+        },
+        {
+          "info": {
+            "name": "Return the full range of registered storage data differentiated into vault/research/revision/total.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/resource_full_year_differentiated_group_storage",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return the full range of registered storage data differentiated into vault/research/revision/total.\n"
+        },
+        {
+          "info": {
+            "name": "Collect storage stats of last month for categories.\nStorage is summed up for each category.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/resource_category_stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect storage stats of last month for categories.\nStorage is summed up for each category.\n"
+        },
+        {
+          "info": {
+            "name": "Collect storage stats for all twelve months based upon categories a user is datamanager of.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/resource_monthly_category_stats",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Collect storage stats for all twelve months based upon categories a user is datamanager of.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

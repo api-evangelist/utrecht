@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin meta_form API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "meta_form",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Retrieve all information required to load a metadata form in either the research or vault space.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/meta_form_load",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve all information required to load a metadata form in either the research or vault space.\n"
+        },
+        {
+          "info": {
+            "name": "Validate and store JSON metadata for a given collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/meta_form_save",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Validate and store JSON metadata for a given collection.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

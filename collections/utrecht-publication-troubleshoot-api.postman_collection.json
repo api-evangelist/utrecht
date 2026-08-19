@@ -1,0 +1,247 @@
+{
+  "item": [
+    {
+      "id": "004764f6-5972-4c0f-b719-ac778f6e8b8a",
+      "name": "publication_troubleshoot",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "6b10b911-177c-4975-8a9c-dbb5d5d428cd",
+          "name": "Wrapper for the batch script for troubleshooting published data packages.\nRuns a subset of the tests since \"technicaladmin\" is usually more restricted than \"rods\".\n",
+          "request": {
+            "name": "Wrapper for the batch script for troubleshooting published data packages.\nRuns a subset of the tests since \"technicaladmin\" is usually more restricted than \"rods\".\n",
+            "description": {},
+            "url": {
+              "path": [
+                "batch_troubleshoot_published_data_packages"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"requested_package\": null,\n  \"log_file\": null,\n  \"offline\": null\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "93802ea6-0347-4fe8-b40e-732879ec7b21",
+              "name": "Success",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch_troubleshoot_published_data_packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "yoda_session",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requested_package\": null,\n  \"log_file\": null,\n  \"offline\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"status_info\": \"string\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3c4c9cb4-9b68-4bfe-b0c9-c3a7898330bc",
+              "name": "Bad request",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch_troubleshoot_published_data_packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "yoda_session",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requested_package\": null,\n  \"log_file\": null,\n  \"offline\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"status_info\": \"string\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c792750-99fa-42df-9d1d-0c6d57bf8511",
+              "name": "Internal error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "batch_troubleshoot_published_data_packages"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "yoda_session",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"requested_package\": null,\n  \"log_file\": null,\n  \"offline\": null\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"status\": \"string\",\n  \"status_info\": \"string\",\n  \"data\": {}\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://portal.yoda.test/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "yoda_session"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ddec916c-546e-4f10-823e-aefc97121f34",
+    "name": "Yoda core admin publication_troubleshoot API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.\n\nContact Support:\n Email: l.r.westerhof@uu.nl",
+      "type": "text/plain"
+    }
+  }
+}

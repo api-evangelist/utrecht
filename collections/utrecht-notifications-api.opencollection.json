@@ -1,0 +1,71 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin notifications API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "notifications",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Load user notifications.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/notifications_load",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Load user notifications.\n"
+        },
+        {
+          "info": {
+            "name": "Dismiss user notification.\n:param identifier: Identifier of notification message",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/notifications_dismiss",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Dismiss user notification.\n:param identifier: Identifier of notification message"
+        },
+        {
+          "info": {
+            "name": "Dismiss all user notifications.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/notifications_dismiss_all",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Dismiss all user notifications.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,41 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "admin",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Checks if the user is admin (i.e., has admin access based on user rights or membership in admin-priv group).\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/admin_has_access",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Checks if the user is admin (i.e., has admin access based on user rights or membership in admin-priv group).\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

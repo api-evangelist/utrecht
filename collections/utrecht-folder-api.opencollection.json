@@ -1,0 +1,131 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin folder API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "folder",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Lock a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_lock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Lock a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Unlock a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_unlock",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unlock a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Submit a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Unsubmit a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_unsubmit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Unsubmit a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Accept a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_accept",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Accept a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Reject a folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_reject",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Reject a folder.\n"
+        },
+        {
+          "info": {
+            "name": "Return a list of locks on a collection.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/folder_get_locks",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return a list of locks on a collection."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

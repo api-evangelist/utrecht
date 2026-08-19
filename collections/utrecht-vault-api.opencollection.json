@@ -1,0 +1,266 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin vault API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "vault",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Submit data package for publication.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Submit data package for publication.\n"
+        },
+        {
+          "info": {
+            "name": "Approve data package for publication.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_approve",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Approve data package for publication.\n"
+        },
+        {
+          "info": {
+            "name": "Cancel submit of data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_cancel",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Cancel submit of data package.\n"
+        },
+        {
+          "info": {
+            "name": "Depublish data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_depublish",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Depublish data package.\n"
+        },
+        {
+          "info": {
+            "name": "Republish data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_republish",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Republish data package.\n"
+        },
+        {
+          "info": {
+            "name": "Copy data package from vault to research space.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_copy_to_research",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy data package from vault to research space.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve lists of preservable file formats on the system.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_preservable_formats_lists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve lists of preservable file formats on the system.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve list of unpreservable file formats in a collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_unpreservable_files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve list of unpreservable file formats in a collection.\n"
+        },
+        {
+          "info": {
+            "name": "Return system metadata of a vault collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_system_metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return system metadata of a vault collection.\n"
+        },
+        {
+          "info": {
+            "name": "Return details of a vault collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_collection_details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return details of a vault collection.\n"
+        },
+        {
+          "info": {
+            "name": "Return path to data package with provided reference (UUID4).\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_get_package_by_reference",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return path to data package with provided reference (UUID4).\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve landingpage data of data package.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_get_landingpage_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve landingpage data of data package.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve the publication terms.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_get_publication_terms",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve the publication terms."
+        },
+        {
+          "info": {
+            "name": "Grant read rights of research group for datapackage in vault.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/grant_read_access_research_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant read rights of research group for datapackage in vault.\n"
+        },
+        {
+          "info": {
+            "name": "Revoke read rights of research group for datapackage in vault.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/revoke_read_access_research_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Revoke read rights of research group for datapackage in vault.\n"
+        },
+        {
+          "info": {
+            "name": "Get the path and DOI of latest versions of published data package in a vault.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/vault_get_published_packages",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get the path and DOI of latest versions of published data package in a vault.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

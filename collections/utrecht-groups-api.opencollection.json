@@ -1,0 +1,250 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin groups API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get role of user in group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_get_user_role",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get role of user in group.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve group data as hierarchy for user.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_data",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve group data as hierarchy for user.\n"
+        },
+        {
+          "info": {
+            "name": "Process contents of CSV file containing group definitions.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_process_csv",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Process contents of CSV file containing group definitions.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve category list.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_categories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve category list."
+        },
+        {
+          "info": {
+            "name": "Retrieve subcategory list.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_subcategories",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve subcategory list.\n"
+        },
+        {
+          "info": {
+            "name": "POST /group_search_users",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_search_users",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Check if group exists.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_exists",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if group exists.\n"
+        },
+        {
+          "info": {
+            "name": "Create a new group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_create",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new group.\n"
+        },
+        {
+          "info": {
+            "name": "Update group property.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_update",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update group property.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a group.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve description of a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_get_description",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve description of a group.\n"
+        },
+        {
+          "info": {
+            "name": "Check if user is member of a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_user_is_member",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Check if user is member of a group.\n"
+        },
+        {
+          "info": {
+            "name": "Add a user to a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_user_add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a user to a group.\n"
+        },
+        {
+          "info": {
+            "name": "Update role of a user in a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_user_update_role",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update role of a user in a group.\n"
+        },
+        {
+          "info": {
+            "name": "Remove a user from a group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/group_remove_user_from_group",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a user from a group.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

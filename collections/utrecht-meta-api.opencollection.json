@@ -1,0 +1,56 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin meta API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "meta",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Remove a collection's metadata JSON, if it exists.",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/meta_remove",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Remove a collection's metadata JSON, if it exists."
+        },
+        {
+          "info": {
+            "name": "Clone a metadata file from a parent collection to a subcollection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/meta_clone_file",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Clone a metadata file from a parent collection to a subcollection.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

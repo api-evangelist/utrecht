@@ -1,0 +1,221 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin research API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "research",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Add a new folder to a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_folder_add",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a new folder to a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Copy a folder in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_folder_copy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy a folder in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Move a folder in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_folder_move",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a folder in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Rename an existing research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_folder_rename",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rename an existing research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_folder_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Get list of temporary files to be cleaned up.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_list_temporary_files",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get list of temporary files to be cleaned up.\n"
+        },
+        {
+          "info": {
+            "name": "Copy a file in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_file_copy",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Copy a file in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Rename a file in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_file_rename",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Rename a file in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Move a file in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_file_move",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Move a file in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Delete a file in a research folder.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_file_delete",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Delete a file in a research folder.\n"
+        },
+        {
+          "info": {
+            "name": "Return collection statistics as JSON.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_system_metadata",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return collection statistics as JSON.\n"
+        },
+        {
+          "info": {
+            "name": "Return details of a research collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_collection_details",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Return details of a research collection.\n"
+        },
+        {
+          "info": {
+            "name": "Produce a manifest of data objects in a collection.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/research_manifest",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Produce a manifest of data objects in a collection.\n"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

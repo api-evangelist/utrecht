@@ -1,0 +1,533 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Yoda core admin datarequest API",
+    "version": "2.1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "yoda_session",
+      "value": "{{yoda_session}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "datarequest",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Wrapper around datarequest_action_permitted.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_action_permitted",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Wrapper around datarequest_action_permitted.\n"
+        },
+        {
+          "info": {
+            "name": "Get roles of invoking user.\n                   if this parameter is missing)\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_roles_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get roles of invoking user.\n                   if this parameter is missing)\n"
+        },
+        {
+          "info": {
+            "name": "POST /datarequest_schema_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_schema_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Given a request ID, get the request ID of the associated resubmitted data request.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_resubmission_id_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Given a request ID, get the request ID of the associated resubmitted data request.\n"
+        },
+        {
+          "info": {
+            "name": "Get paginated datarequests, including size/modify date information.\n                    show non-archived data requests\n                    be reviewed\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_browse",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get paginated datarequests, including size/modify date information.\n                    show non-archived data requests\n                    be reviewed\n"
+        },
+        {
+          "info": {
+            "name": "Persist a data request to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist a data request to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a data request.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a data request.\n"
+        },
+        {
+          "info": {
+            "name": "                   revoked (\"grantread\" or \"revoke\")\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_attachment_upload_permission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "                   revoked (\"grantread\" or \"revoke\")\n"
+        },
+        {
+          "info": {
+            "name": "Grant read permissions on the attachment to the owner of the associated data request.\n:param filename:   Filename of attachment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_attachment_post_upload_actions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant read permissions on the attachment to the owner of the associated data request.\n:param filename:   Filename of attachment"
+        },
+        {
+          "info": {
+            "name": "Get all attachments of a given data request.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_attachments_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get all attachments of a given data request.\n"
+        },
+        {
+          "info": {
+            "name": "Finalize the submission of uploaded attachments\n:param request_id: Unique identifier of the data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_attachments_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Finalize the submission of uploaded attachments\n:param request_id: Unique identifier of the data request"
+        },
+        {
+          "info": {
+            "name": "Persist a preliminary review to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_preliminary_review_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist a preliminary review to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a preliminary review.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_preliminary_review_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a preliminary review.\n"
+        },
+        {
+          "info": {
+            "name": "Persist a datamanager review to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_datamanager_review_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist a datamanager review to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a data manager review.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_datamanager_review_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a data manager review.\n"
+        },
+        {
+          "info": {
+            "name": "POST /datarequest_dac_members_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_dac_members_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "Persist an assignment to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_assignment_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist an assignment to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve assignment.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_assignment_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve assignment.\n"
+        },
+        {
+          "info": {
+            "name": "Persist a data request review to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_review_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist a data request review to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a data request review.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_reviews_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a data request review.\n"
+        },
+        {
+          "info": {
+            "name": "Persist an evaluation to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_evaluation_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist an evaluation to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve approval conditions\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_approval_conditions_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve approval conditions\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve an evaluation.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_evaluation_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve an evaluation.\n"
+        },
+        {
+          "info": {
+            "name": "Get feedback for researcher\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_feedback_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get feedback for researcher\n"
+        },
+        {
+          "info": {
+            "name": "Persist a preregistration to disk.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_preregistration_submit",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Persist a preregistration to disk.\n"
+        },
+        {
+          "info": {
+            "name": "Retrieve a preregistration.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_preregistration_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Retrieve a preregistration.\n"
+        },
+        {
+          "info": {
+            "name": "Set the status of a submitted datarequest to PREREGISTRATION_CONFIRMED.\n:param request_id: Unique identifier of the data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_preregistration_confirm",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the status of a submitted datarequest to PREREGISTRATION_CONFIRMED.\n:param request_id: Unique identifier of the data request"
+        },
+        {
+          "info": {
+            "name": "                   revoked (\"revoke\")\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_dta_upload_permission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "                   revoked (\"revoke\")\n"
+        },
+        {
+          "info": {
+            "name": "Grant read permissions on the DTA to the owner of the associated data request.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_dta_post_upload_actions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant read permissions on the DTA to the owner of the associated data request.\n"
+        },
+        {
+          "info": {
+            "name": "POST /datarequest_dta_path_get",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_dta_path_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          }
+        },
+        {
+          "info": {
+            "name": "                   revoked (\"revoke\")\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_signed_dta_upload_permission",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "                   revoked (\"revoke\")\n"
+        },
+        {
+          "info": {
+            "name": "Grant read permissions on the signed DTA to the datamanagers group.\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_signed_dta_post_upload_actions",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Grant read permissions on the signed DTA to the datamanagers group.\n"
+        },
+        {
+          "info": {
+            "name": "Get path to signed DTA\n",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_signed_dta_path_get",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Get path to signed DTA\n"
+        },
+        {
+          "info": {
+            "name": "Set the status of a submitted datarequest to DATA_READY.\n:param request_id: Unique identifier of the data request",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://portal.yoda.test/api/datarequest_data_ready",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Set the status of a submitted datarequest to DATA_READY.\n:param request_id: Unique identifier of the data request"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
