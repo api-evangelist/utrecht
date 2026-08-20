@@ -38,6 +38,15 @@ tags:
   - Research Data
   - Open Access
   - Library
+  - Open-Source
+tags_raw:
+  - Education
+  - Higher Education
+  - University
+  - Netherlands
+  - Research Data
+  - Open Access
+  - Library
   - Open Source
 created: '2026-06-03'
 modified: '2026-06-03'
@@ -69,6 +78,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Admin
+  tags_raw:
   - admin
   properties:
   - type: OpenAPI
@@ -93,6 +104,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Browse
+  tags_raw:
   - browse
   properties:
   - type: OpenAPI
@@ -117,7 +130,8 @@ apis:
     The data_access_token API from Utrecht University — 4 operation(s) for data_access_token.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - data_access_token
   properties:
   - type: OpenAPI
@@ -166,6 +180,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Folder
+  tags_raw:
   - folder
   properties:
   - type: OpenAPI
@@ -190,6 +206,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Group
+  tags_raw:
   - groups
   properties:
   - type: OpenAPI
@@ -214,6 +232,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Meta
+  tags_raw:
   - meta
   properties:
   - type: OpenAPI
@@ -237,7 +257,8 @@ apis:
   description: The meta_form API from Utrecht University — 2 operation(s) for meta_form.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - meta_form
   properties:
   - type: OpenAPI
@@ -262,6 +283,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Notification
+  tags_raw:
   - notifications
   properties:
   - type: OpenAPI
@@ -286,6 +309,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Provenance
+  tags_raw:
   - provenance
   properties:
   - type: OpenAPI
@@ -310,7 +335,8 @@ apis:
     The publication_troubleshoot API from Utrecht University — 1 operation(s) for publication_troubleshoot.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - publication_troubleshoot
   properties:
   - type: OpenAPI
@@ -335,6 +361,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Research
+  tags_raw:
   - research
   properties:
   - type: OpenAPI
@@ -359,6 +387,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Revisions
+  tags_raw:
   - revisions
   properties:
   - type: OpenAPI
@@ -383,6 +413,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Schema
+  tags_raw:
   - schema
   properties:
   - type: OpenAPI
@@ -408,6 +440,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Schema Transformation
+  tags_raw:
   - schema_transformation
   properties:
   - type: OpenAPI
@@ -432,6 +466,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Settings
+  tags_raw:
   - settings
   properties:
   - type: OpenAPI
@@ -456,6 +492,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Stats
+  tags_raw:
   - stats
   properties:
   - type: OpenAPI
@@ -480,6 +518,8 @@ apis:
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
+  - Vault
+  tags_raw:
   - vault
   properties:
   - type: OpenAPI
@@ -503,7 +543,8 @@ apis:
   description: The vault_archive API from Utrecht University — 3 operation(s) for vault_archive.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - vault_archive
   properties:
   - type: OpenAPI
@@ -528,7 +569,8 @@ apis:
     The vault_deaccession API from Utrecht University — 4 operation(s) for vault_deaccession.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
+  tags: []
+  tags_raw:
   - vault_deaccession
   properties:
   - type: OpenAPI
