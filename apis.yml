@@ -13,6 +13,20 @@ description: >-
   API developer portal; most administrative and identity systems are gated behind
   institutional SolisID/SSO.
 type: Index
+deliveryModel:
+  model: open-core
+  license: GPL-3.0
+  open_source: true
+  commercial: true
+  callable_host: false
+  label: Open core · an OSS project plus a commercial hosted product
+  confidence: high
+  source:
+  - license
+  - openapi
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 accessModel:
   pricing: free
   onboarding: self-serve
@@ -590,6 +604,12 @@ apis:
   - type: x-rules
     url: rules/utrecht-rules.yml
 common:
+  - type: IssueTracker
+    url: https://github.com/UtrechtUniversity/yoda-ruleset/issues
+  - type: SecurityPolicy
+    url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/SECURITY.md
+  - type: CodeOfConduct
+    url: https://github.com/UtrechtUniversity/.github/blob/main/CODE_OF_CONDUCT.md
   - type: License
     name: GPL-3.0
     url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/LICENSE
