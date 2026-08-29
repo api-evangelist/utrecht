@@ -1,0 +1,28 @@
+slug: utrecht
+provider: Utrecht University
+generated_by: planning/capability-mapping/scripts/classify_capabilities.py
+model: claude-opus-5
+frame:
+- Education
+min_confidence: 0.7
+capability_model:
+  source: https://github.com/vincentmakes/turbo-ea-capabilities
+  license: CC-BY-4.0
+  attribution: Turbo EA Capabilities by Vincent Verdet — Turbo EA, https://github.com/vincentmakes/turbo-ea-capabilities,
+    CC BY 4.0
+  notice: NOTICE
+edge_count: 1
+edges:
+- tag: vault
+  spec_file: utrecht-vault-api-openapi.yml
+  capability_id: BC-4780.40
+  capability_id_l1: BC-4780
+  capability_name: Scholarly Output & Publication Management
+  confidence: 0.75
+  evidence: POST /vault_submit    Submit data package for publication.  POST /vault_approve    Approve
+    data package for publication.  POST /vault_depublish
+  reason: Yoda is Utrecht's research data management platform; the vault operations govern submission,
+    approval, publication and depublication of research data packages, which is stewardship of scholarly
+    output/research data within Research & Scholarship Management. Sub-capability 4780.40 (Scholarly Output
+    & Publication Management) is the closest fit, though it is a research-data repository rather than
+    a publications registry.

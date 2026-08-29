@@ -604,6 +604,9 @@ apis:
   - type: x-rules
     url: rules/utrecht-rules.yml
 common:
+  - type: CapabilityMap
+    url: capabilities/utrecht-capability-edges.yml
+    name: Utrecht University Business Capability Map
   - type: IssueTracker
     url: https://github.com/UtrechtUniversity/yoda-ruleset/issues
   - type: SecurityPolicy
