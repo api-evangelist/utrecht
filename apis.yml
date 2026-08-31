@@ -1,32 +1,39 @@
----
 aid: utrecht
 name: Utrecht University
 description: >-
-  Utrecht University (Universiteit Utrecht) is a public research university in
-  Utrecht, Netherlands, ranked #105 in the QS World University Rankings 2025. Its
-  public developer and API footprint is centered on open research infrastructure
-  rather than a formal developer portal: the Utrecht University Library runs a
-  DSpace institutional repository exposing publication metadata via OAI-PMH, the
-  university maintains a large public GitHub organization (UtrechtUniversity) that
-  publishes open-source research software, and it develops Yoda, an iRODS-based
-  research data management platform. There is no single consolidated, self-service
-  API developer portal; most administrative and identity systems are gated behind
-  institutional SolisID/SSO.
+  Utrecht University (Universiteit Utrecht) is a public research university in Utrecht, Netherlands, founded
+  in 1636 and a member of the League of European Research Universities. It is one of the few universities
+  in this catalog whose largest machine-readable surface is its OWN engineering rather than a vendor's:
+  Utrecht authors and operates Yoda, a GPL-3.0 iRODS-based research data management platform (github.com/UtrechtUniversity/yoda-ruleset),
+  and runs it in production at portal.yoda.uu.nl. The Yoda HTTP API is real but not open — every call
+  redirects to SolisID login unless it carries a session cookie or a Yoda data access token — so the OpenAPIs
+  in this repo describe a live institution-operated API that no anonymous client can call. Alongside it
+  the University Library runs a DSpace 9.0 institutional repository whose REST API and OAI-PMH interface
+  are both openly readable at dspace.library.uu.nl, and IT Services operates a SAML 2.0 identity provider
+  registered in the SURFconext federation. The research information system is NOT Utrecht's: research-portal.uu.nl
+  is an Elsevier Pure tenancy (uu.elsevierpure.com), recorded here as a tenant relationship and not as
+  Utrecht's contract. There is no central developer portal, no api.uu.nl, no public course-catalog or
+  campus API, and no published API terms or rate limits; OSIRIS, the student administration system, returns
+  403 to unauthenticated clients.
 type: Index
 deliveryModel:
-  model: open-core
+  model: self-hosted
   license: GPL-3.0
   open_source: true
-  commercial: true
-  callable_host: false
-  label: Open core · an OSS project plus a commercial hosted product
+  commercial: false
+  callable_host: true
+  label: Self-hosted · GPL-3.0 software the institution runs itself, no commercial offering
   confidence: high
   source:
   - license
   - openapi
-  - pricing
-  generated: '2026-08-28'
-  method: derived
+  - probe
+  generated: '2026-08-30'
+  method: probed
+  evidence: >-
+    Yoda is GPL-3.0 and authored by Utrecht University; there is no commercial edition and no vendor sells
+    it, so the prior open-core/commercial reading was wrong. callable_host corrected to true: portal.yoda.uu.nl/api
+    answers (302 to login) and dspace.library.uu.nl/server/api answers anonymously, both verified 2026-08-30.
 accessModel:
   pricing: free
   onboarding: self-serve
@@ -45,33 +52,46 @@ access: 3rd-Party
 image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/utrecht.png
 url: https://raw.githubusercontent.com/api-evangelist/utrecht/refs/heads/main/apis.yml
 tags:
-  - Education
-  - Higher Education
-  - University
-  - Netherlands
-  - Research Data
-  - Open Access
-  - Library
-  - Open-Source
+- Education
+- Higher Education
+- University
+- Netherlands
+- Europe
+- Research Data
+- Research Data Management
+- Institutional Repository
+- Identity Federation
+- OAI-PMH
+- Open Access
+- Open Science
+- Library
+- Open-Source
 tags_raw:
-  - Education
-  - Higher Education
-  - University
-  - Netherlands
-  - Research Data
-  - Open Access
-  - Library
-  - Open Source
+- Education
+- Higher Education
+- University
+- Netherlands
+- Europe
+- Research Data
+- Research Data Management
+- Institutional Repository
+- Identity Federation
+- OAI-PMH
+- Open Access
+- Open Science
+- Library
+- Open Source
 created: '2026-06-03'
-modified: '2026-06-03'
+modified: '2026-08-30'
 specificationVersion: '0.23'
 apis:
 - aid: utrecht:repository-oai
   name: Utrecht University Repository OAI-PMH
   description: >-
-    OAI-PMH metadata harvesting interface for the Utrecht University Library DSpace institutional repository,
-    exposing publication and resource metadata of Utrecht University and UMC Utrecht researchers. Confirmed
-    live as a DSpace 9 instance responding to standard OAI-PMH verbs (Identify, ListRecords, etc.).
+    OAI-PMH 2.0 metadata harvesting interface for the Utrecht University Library institutional repository.
+    Verified live 2026-08-30 on DSpace 9.0: Identify, ListMetadataFormats and ListRecords all answer,
+    earliest datestamp 2001-01-03, 16 metadata prefixes advertised including oai_dc, mods, mets, ore,
+    rioxx and etdms. An OpenAIRE-profiled set is served separately at /oai/openaire.
   humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
   baseURL: https://dspace.library.uu.nl/server/oai/request
   tags:
@@ -86,11 +106,17 @@ apis:
     url: https://www.uu.nl/en/university-library/utrecht-university-repository
   - type: OpenAIRE
     url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
+  x-operator: institution
+  x-operator-evidence: >-
+    dspace.library.uu.nl is under Utrecht's own registrable domain and the Identify response names repositoryName
+    'Utrecht University Repository' with adminEmail repository@uu.nl. DSpace is community open-source
+    software, not a commercial tenancy — Utrecht hosts and operates the instance. The DSpace REST/OAI
+    contract itself is DSpace's, so no generic DSpace OpenAPI is saved under this slug.
 - aid: utrecht:utrecht-admin-api
   name: Utrecht University admin API
   description: The admin API from Utrecht University — 1 operation(s) for admin.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Admin
   tags_raw:
@@ -112,13 +138,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-browse-api
   name: Utrecht University browse API
   description: The browse API from Utrecht University — 4 operation(s) for browse.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - Browse
+  - browse
   tags_raw:
   - browse
   properties:
@@ -138,12 +171,19 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-data-access-token-api
   name: Utrecht University data_access_token API
   description: >-
     The data_access_token API from Utrecht University — 4 operation(s) for data_access_token.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags: []
   tags_raw:
   - data_access_token
@@ -164,11 +204,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-datarequest-api
   name: Utrecht University datarequest API
   description: The datarequest API from Utrecht University — 34 operation(s) for datarequest.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - datarequest
   properties:
@@ -188,11 +235,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-folder-api
   name: Utrecht University folder API
   description: The folder API from Utrecht University — 7 operation(s) for folder.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Folder
   tags_raw:
@@ -214,11 +268,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-groups-api
   name: Utrecht University groups API
   description: The groups API from Utrecht University — 15 operation(s) for groups.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Group
   tags_raw:
@@ -240,11 +301,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-meta-api
   name: Utrecht University meta API
   description: The meta API from Utrecht University — 2 operation(s) for meta.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Meta
   tags_raw:
@@ -266,11 +334,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-meta-form-api
   name: Utrecht University meta_form API
   description: The meta_form API from Utrecht University — 2 operation(s) for meta_form.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags: []
   tags_raw:
   - meta_form
@@ -291,11 +366,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-notifications-api
   name: Utrecht University notifications API
   description: The notifications API from Utrecht University — 3 operation(s) for notifications.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Notification
   tags_raw:
@@ -317,13 +399,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-provenance-api
   name: Utrecht University provenance API
   description: The provenance API from Utrecht University — 1 operation(s) for provenance.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - Provenance
+  - provenance
   tags_raw:
   - provenance
   properties:
@@ -343,12 +432,19 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-publication-troubleshoot-api
   name: Utrecht University publication_troubleshoot API
   description: >-
     The publication_troubleshoot API from Utrecht University — 1 operation(s) for publication_troubleshoot.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags: []
   tags_raw:
   - publication_troubleshoot
@@ -369,13 +465,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-research-api
   name: Utrecht University research API
   description: The research API from Utrecht University — 13 operation(s) for research.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - Research
+  - research
   tags_raw:
   - research
   properties:
@@ -395,13 +498,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-revisions-api
   name: Utrecht University revisions API
   description: The revisions API from Utrecht University — 3 operation(s) for revisions.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - Revisions
+  - revisions
   tags_raw:
   - revisions
   properties:
@@ -421,11 +531,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-schema-api
   name: Utrecht University schema API
   description: The schema API from Utrecht University — 1 operation(s) for schema.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Schema
   tags_raw:
@@ -447,14 +564,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-schema-transformation-api
   name: Utrecht University schema_transformation API
   description: >-
     The schema_transformation API from Utrecht University — 1 operation(s) for schema_transformation.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
-  tags:
-  - Schema Transformation
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
+  tags: []
   tags_raw:
   - schema_transformation
   properties:
@@ -474,11 +597,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-settings-api
   name: Utrecht University settings API
   description: The settings API from Utrecht University — 2 operation(s) for settings.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Settings
   tags_raw:
@@ -500,11 +630,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-stats-api
   name: Utrecht University stats API
   description: The stats API from Utrecht University — 4 operation(s) for stats.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
   - Stats
   tags_raw:
@@ -526,13 +663,20 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-api
   name: Utrecht University vault API
   description: The vault API from Utrecht University — 16 operation(s) for vault.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - Vault
+  - vault
   tags_raw:
   - vault
   properties:
@@ -552,11 +696,18 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-archive-api
   name: Utrecht University vault_archive API
   description: The vault_archive API from Utrecht University — 3 operation(s) for vault_archive.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags: []
   tags_raw:
   - vault_archive
@@ -577,12 +728,19 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-deaccession-api
   name: Utrecht University vault_deaccession API
   description: >-
     The vault_deaccession API from Utrecht University — 4 operation(s) for vault_deaccession.
-  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
-  baseURL: https://dspace.library.uu.nl/server/oai/request
+  humanURL: https://utrechtuniversity.github.io/yoda/
+  baseURL: https://portal.yoda.uu.nl/api
   tags: []
   tags_raw:
   - vault_deaccession
@@ -603,43 +761,231 @@ apis:
     url: json-ld/utrecht-context.jsonld
   - type: x-rules
     url: rules/utrecht-rules.yml
-common:
-  - type: CapabilityMap
-    url: capabilities/utrecht-capability-edges.yml
-    name: Utrecht University Business Capability Map
-  - type: IssueTracker
-    url: https://github.com/UtrechtUniversity/yoda-ruleset/issues
-  - type: SecurityPolicy
-    url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/SECURITY.md
-  - type: CodeOfConduct
-    url: https://github.com/UtrechtUniversity/.github/blob/main/CODE_OF_CONDUCT.md
-  - type: License
-    name: GPL-3.0
-    url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/LICENSE
-  - type: AgenticAccess
-    url: agentic-access/utrecht-agentic-access.yml
-  - type: VulnerabilityDisclosure
-    url: security/utrecht-vulnerability-disclosure.yml
-  - type: DomainSecurity
-    url: security/utrecht-domain-security.yml
-  - type: Authentication
-    url: authentication/utrecht-authentication.yml
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+  x-operator: institution
+  x-baseurl-note: >-
+    The Yoda API is a POST-per-function router: GET https://portal.yoda.uu.nl/api returns 404 by design,
+    while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
+    Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
+- aid: utrecht:repository-rest
+  name: Utrecht University Repository REST API
+  x-operator: institution
+  x-operator-evidence: >-
+    Host dspace.library.uu.nl is Utrecht's own. The API root self-identifies as dspaceName 'Utrecht University
+    Repository', dspaceVersion 'DSpace 9.0'. DSpace is community open-source software the University Library
+    self-hosts; the running service is Utrecht's, the REST contract is the DSpace project's, so the deployment
+    is recorded here and DSpace's generic OpenAPI is not saved under this slug.
+  description: >-
+    The DSpace 9.0 HAL/JSON REST API behind the Utrecht University Repository. Openly readable without
+    a key: the root at /server/api enumerates ~60 link relations, and /server/api/discover/search/objects
+    answers real queries and returns results. This is the largest anonymously-callable machine surface
+    Utrecht operates.
+  humanURL: https://www.uu.nl/en/university-library/utrecht-university-repository
+  baseURL: https://dspace.library.uu.nl/server/api
+  tags:
+  - Library
+  - Repository
+  - Institutional Repository
+  - DSpace
+  - Open Access
+  - Research
+  properties:
+  - type: Documentation
+    url: https://www.uu.nl/en/university-library/utrecht-university-repository
+  - type: APIReference
+    url: https://dspace.library.uu.nl/server/api
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+- aid: utrecht:identity-federation
+  name: Utrecht University SAML 2.0 Identity Provider Metadata
+  x-operator: institution
+  x-operator-evidence: >-
+    login.uu.nl is Utrecht's own host and the entityID is https://login.uu.nl/nidp/saml2/metadata. Identity
+    federation is institution-operated by definition — no vendor can assert an institution's entityID.
+    The entry is registered in SURFconext, the Dutch R&E federation, which participates in eduGAIN.
+  description: >-
+    Signed SAML 2.0 EntityDescriptor for Utrecht University's identity provider, served as XML at a stable
+    URL and carried in SURFconext's national federation metadata. Machine-readable, institution-operated,
+    and the surface class universities almost never get catalogued for. Verified live 2026-08-30 (200,
+    ~24KB of signed md:EntityDescriptor).
+  humanURL: https://www.surfconext.nl/
+  baseURL: https://login.uu.nl/nidp/saml2/metadata
+  tags:
+  - Identity Federation
+  - SAML
+  - SSO
+  - SURFconext
+  - eduGAIN
+  - Authentication
+  properties:
+  - type: APIReference
+    url: https://login.uu.nl/nidp/saml2/metadata
+  - type: Documentation
+    url: https://www.surfconext.nl/
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+- aid: utrecht:pure-research-portal
+  name: Utrecht University Research Portal (Elsevier Pure tenancy)
+  x-operator: tenant
+  x-operator-evidence: >-
+    uu.elsevierpure.com resolves and redirects to research-portal.uu.nl, and the portal HTML carries Pure
+    and Elsevier Fingerprint Engine markers. The Pure Web Service at /ws/api returns 401 'Please provide
+    a valid API key'. This is Utrecht's data on Elsevier's platform under Utrecht's own vanity hostname:
+    a tenant relationship. It is recorded because it is a real institutional fact; Pure's contract is
+    NOT saved under this slug and belongs to Elsevier's own repo.
+  description: >-
+    Utrecht University's current research information system and public research portal, running on Elsevier
+    Pure. Two machine doors were probed on 2026-08-30: the Pure Web Service REST API at /ws/api, which
+    is key-gated (401), and an open OAI-PMH endpoint at /ws/oai whose Identify names 'Utrecht University
+    Pure OAI Repository' with adminEmail pure@uu.nl and which advertises oai_cerif_openaire. Institution's
+    data, vendor's contract.
+  humanURL: https://research-portal.uu.nl/
+  baseURL: https://research-portal.uu.nl/ws/oai
+  tags:
+  - Research Information
+  - CRIS
+  - Elsevier Pure
+  - OAI-PMH
+  - Research
+  - Tenant
+  properties:
   - type: Website
-    url: https://www.uu.nl/en
-  - type: GitHub
-    url: https://github.com/UtrechtUniversity
-  - type: LinkedIn
-    url: https://www.linkedin.com/school/utrecht-university/
-  - type: Repository
-    url: https://dspace.library.uu.nl/
-  - type: Plans
-    url: plans/utrecht-plans-pricing.yml
-  - type: RateLimits
-    url: rate-limits/utrecht-rate-limits.yml
-  - type: FinOps
-    url: finops/utrecht-finops.yml
-  - type: Review
-    url: review.yml
+    url: https://research-portal.uu.nl/
+  - type: APIReference
+    url: https://research-portal.uu.nl/ws/api
+  - type: x-conformance
+    url: conformance/utrecht-domain-standards.yml
+common:
+- type: CapabilityMap
+  url: capabilities/utrecht-capability-edges.yml
+  name: Utrecht University Business Capability Map
+- type: IssueTracker
+  url: https://github.com/UtrechtUniversity/yoda-ruleset/issues
+- type: SecurityPolicy
+  url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/SECURITY.md
+- type: CodeOfConduct
+  url: https://github.com/UtrechtUniversity/.github/blob/main/CODE_OF_CONDUCT.md
+- type: License
+  name: GPL-3.0
+  url: https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/LICENSE
+- type: AgenticAccess
+  url: agentic-access/utrecht-agentic-access.yml
+- type: VulnerabilityDisclosure
+  url: security/utrecht-vulnerability-disclosure.yml
+- type: DomainSecurity
+  url: security/utrecht-domain-security.yml
+- type: Authentication
+  url: authentication/utrecht-authentication.yml
+- type: Website
+  url: https://www.uu.nl/en
+- type: GitHub
+  url: https://github.com/UtrechtUniversity
+- type: LinkedIn
+  url: https://www.linkedin.com/school/utrecht-university/
+- type: Repository
+  url: https://dspace.library.uu.nl/
+- type: Plans
+  url: plans/utrecht-plans-pricing.yml
+- type: RateLimits
+  url: rate-limits/utrecht-rate-limits.yml
+- type: FinOps
+  url: finops/utrecht-finops.yml
+- type: Review
+  url: review.yml
+- type: Documentation
+  url: https://utrechtuniversity.github.io/yoda/
+  name: Yoda platform documentation
+- type: APIReference
+  url: https://dspace.library.uu.nl/server/api
+  name: Utrecht University Repository REST API root
+- type: ResearchRepository
+  url: https://dspace.library.uu.nl/
+  name: Utrecht University Repository (DSpace 9.0)
+- type: ResearchRepository
+  url: https://research-portal.uu.nl/
+  name: Utrecht University Research Portal (Elsevier Pure tenancy)
+- type: IdentityFederation
+  url: https://login.uu.nl/nidp/saml2/metadata
+  name: SAML 2.0 IdP metadata, registered in SURFconext
+- type: ResearchComputing
+  url: https://portal.yoda.uu.nl/
+  name: Yoda research data management portal
+- type: TermsOfService
+  url: https://www.uu.nl/en/disclaimer
+- type: PrivacyPolicy
+  url: https://www.uu.nl/en/privacy
+- type: Support
+  url: https://www.uu.nl/en/contact
+- type: Conformance
+  url: conformance/utrecht-domain-standards.yml
+- type: VulnerabilityDisclosure
+  url: https://www.uu.nl/sites/default/files/security.txt
+  name: security.txt (301 from /.well-known/security.txt)
 maintainers:
-  - FN: Kin Lane
-    email: kin@apievangelist.com
+- FN: Kin Lane
+  email: kin@apievangelist.com
+x-type: university
+x-category: Public Research University
+x-coverage:
+  state: covered
+  reason: covered
+  detail: >-
+    Utrecht operates real, institution-owned machine surfaces and they were reached. Two are anonymously
+    callable: the DSpace 9.0 REST API and OAI-PMH interface at dspace.library.uu.nl, and the SAML 2.0
+    IdP metadata at login.uu.nl. One is live but authenticated: the Yoda API at portal.yoda.uu.nl/api,
+    which 302s every call to /user/login — the 20 OpenAPIs in this repo describe it and are Utrecht's
+    own authorship, not a vendor's. One surface is a tenancy: research-portal.uu.nl is Elsevier Pure and
+    is recorded as such rather than credited to Utrecht. What does NOT exist was probed and confirmed
+    absent: api.uu.nl, developer.uu.nl, developers.uu.nl, opendata.uu.nl and data.uu.nl all fail to resolve;
+    there is no developer portal, no course-catalog or campus API, no published API terms, plans or rate
+    limits. Two partial obstructions worth recording: public.yoda.uu.nl sits behind an Anubis bot challenge,
+    and a subset of www.uu.nl content paths (/yoda, /en/research/*) serve a 'Security verifications' interstitial
+    to non-browser clients while returning a proper 404 title for genuinely missing pages — those pages
+    are live, just not machine-readable from here.
+  evidence:
+  - url: https://portal.yoda.uu.nl/api/schema_get_schemas
+    status: 302
+    note: redirect to /user/login — live, auth-gated
+  - url: https://dspace.library.uu.nl/server/api
+    status: 200
+    note: DSpace 9.0 HAL/JSON root
+  - url: https://dspace.library.uu.nl/server/api/discover/search/objects?query=climate
+    status: 200
+    note: anonymous query returns results
+  - url: https://dspace.library.uu.nl/server/oai/request?verb=Identify
+    status: 200
+  - url: https://login.uu.nl/nidp/saml2/metadata
+    status: 200
+    note: signed SAML 2.0 metadata
+  - url: https://metadata.surfconext.nl/idps-metadata.xml
+    status: 200
+    note: carries the uu.nl entityID
+  - url: https://research-portal.uu.nl/ws/oai?verb=Identify
+    status: 200
+    note: Pure tenancy, open OAI
+  - url: https://research-portal.uu.nl/ws/api/524/openapi.yaml
+    status: 401
+    note: Pure Web Service requires an API key
+  - url: https://public.yoda.uu.nl/api/schema_get_schemas
+    status: 200
+    note: Anubis bot challenge body, not data
+  - url: https://osiris.uu.nl/
+    status: 403
+    note: student administration, no anonymous access
+  - url: https://api.uu.nl/
+    status: 0
+    note: does not resolve
+  - url: https://developer.uu.nl/
+    status: 0
+    note: does not resolve
+  - url: https://data.uu.nl/
+    status: 0
+    note: does not resolve
+  - url: https://opendata.uu.nl/
+    status: 0
+    note: does not resolve
+  - url: https://www.uu.nl/llms.txt
+    status: 404
+  generated: '2026-08-30'
+  method: probed
