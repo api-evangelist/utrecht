@@ -151,7 +151,7 @@ apis:
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - browse
+  - Browse
   tags_raw:
   - browse
   properties:
@@ -412,7 +412,7 @@ apis:
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - provenance
+  - Provenance
   tags_raw:
   - provenance
   properties:
@@ -478,7 +478,7 @@ apis:
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - research
+  - Research
   tags_raw:
   - research
   properties:
@@ -511,7 +511,7 @@ apis:
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - revisions
+  - Revisions
   tags_raw:
   - revisions
   properties:
@@ -577,7 +577,8 @@ apis:
     The schema_transformation API from Utrecht University — 1 operation(s) for schema_transformation.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
-  tags: []
+  tags:
+  - Schema Transformation
   tags_raw:
   - schema_transformation
   properties:
@@ -676,7 +677,7 @@ apis:
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
   tags:
-  - vault
+  - Vault
   tags_raw:
   - vault
   properties:
