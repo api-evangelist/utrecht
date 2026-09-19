@@ -847,6 +847,13 @@ apis:
   baseURL: https://research-portal.uu.nl/ws/oai
   tags:
   - Research Information
+  - CRI
+  - Elsevier Pure
+  - OAI-PMH
+  - Research
+  - Tenants
+  tags_raw:
+  - Research Information
   - CRIS
   - Elsevier Pure
   - OAI-PMH
