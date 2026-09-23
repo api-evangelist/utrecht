@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_get_user_role",
+            "url": "https://portal.yoda.uu.nl/api/group_get_user_role",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_data",
+            "url": "https://portal.yoda.uu.nl/api/group_data",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_process_csv",
+            "url": "https://portal.yoda.uu.nl/api/group_process_csv",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_categories",
+            "url": "https://portal.yoda.uu.nl/api/group_categories",
             "body": {
               "type": "json",
               "data": "{}"
@@ -86,7 +86,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_subcategories",
+            "url": "https://portal.yoda.uu.nl/api/group_subcategories",
             "body": {
               "type": "json",
               "data": "{}"
@@ -101,7 +101,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_search_users",
+            "url": "https://portal.yoda.uu.nl/api/group_search_users",
             "body": {
               "type": "json",
               "data": "{}"
@@ -115,7 +115,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_exists",
+            "url": "https://portal.yoda.uu.nl/api/group_exists",
             "body": {
               "type": "json",
               "data": "{}"
@@ -130,7 +130,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_create",
+            "url": "https://portal.yoda.uu.nl/api/group_create",
             "body": {
               "type": "json",
               "data": "{}"
@@ -145,7 +145,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_update",
+            "url": "https://portal.yoda.uu.nl/api/group_update",
             "body": {
               "type": "json",
               "data": "{}"
@@ -160,7 +160,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_delete",
+            "url": "https://portal.yoda.uu.nl/api/group_delete",
             "body": {
               "type": "json",
               "data": "{}"
@@ -175,7 +175,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_get_description",
+            "url": "https://portal.yoda.uu.nl/api/group_get_description",
             "body": {
               "type": "json",
               "data": "{}"
@@ -190,7 +190,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_user_is_member",
+            "url": "https://portal.yoda.uu.nl/api/group_user_is_member",
             "body": {
               "type": "json",
               "data": "{}"
@@ -205,7 +205,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_user_add",
+            "url": "https://portal.yoda.uu.nl/api/group_user_add",
             "body": {
               "type": "json",
               "data": "{}"
@@ -220,7 +220,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_user_update_role",
+            "url": "https://portal.yoda.uu.nl/api/group_user_update_role",
             "body": {
               "type": "json",
               "data": "{}"
@@ -235,7 +235,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/group_remove_user_from_group",
+            "url": "https://portal.yoda.uu.nl/api/group_remove_user_from_group",
             "body": {
               "type": "json",
               "data": "{}"

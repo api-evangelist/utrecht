@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin vault_deaccession API
+  title: Yoda core Vault Deaccession API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,9 +18,7 @@ paths:
     post:
       tags:
       - vault_deaccession
-      summary: 'Request deaccession status of vault data package.
-
-        '
+      summary: Request deaccession status of vault data package
       requestBody:
         required: true
         content:
@@ -34,7 +32,6 @@ paths:
                   type: string
                   description: Vault data package to request deaccession status from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -46,21 +43,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultDeaccessionStatus
+      x-operation-id-source: derived
   /vault_request_deaccession:
     post:
       tags:
       - vault_deaccession
-      summary: 'Request to deaccession a vault data package.
-
-        '
+      summary: Request to deaccession a vault data package
       requestBody:
         required: true
         content:
@@ -75,12 +72,10 @@ paths:
                   type: string
                   description: Vault data package to deaccession
                   default: null
-                  nullable: false
                 reason:
                   type: string
                   description: Reason for reaccession of vault data package
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -92,21 +87,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultRequestDeaccession
+      x-operation-id-source: derived
   /vault_cancel_deaccession:
     post:
       tags:
       - vault_deaccession
-      summary: 'Cancel a request to deaccession a vault data package.
-
-        '
+      summary: Cancel a request to deaccession a vault data package
       requestBody:
         required: true
         content:
@@ -120,7 +115,6 @@ paths:
                   type: string
                   description: Vault data package to cancel deaccession from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -132,21 +126,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultCancelDeaccession
+      x-operation-id-source: derived
   /vault_approve_deaccession:
     post:
       tags:
       - vault_deaccession
-      summary: 'Approve request to deaccession a vault data package.
-
-        '
+      summary: Approve request to deaccession a vault data package
       requestBody:
         required: true
         content:
@@ -160,7 +154,6 @@ paths:
                   type: string
                   description: Vault data package to approve deaccession on
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -172,24 +165,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultApproveDeaccession
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -206,8 +201,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

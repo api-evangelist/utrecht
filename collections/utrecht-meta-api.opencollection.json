@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/meta_remove",
+            "url": "https://portal.yoda.uu.nl/api/meta_remove",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/meta_clone_file",
+            "url": "https://portal.yoda.uu.nl/api/meta_clone_file",
             "body": {
               "type": "json",
               "data": "{}"

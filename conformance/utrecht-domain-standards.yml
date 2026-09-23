@@ -1,0 +1,129 @@
+# Education-regime domain standard conformance for Utrecht University.
+# Reward-only. Every entry below points at a location that was fetched and read on the date shown.
+# Nothing is recorded here on the strength of a prose claim.
+conformance: '0.1'
+provider: utrecht
+regime: education
+generated: '2026-08-30'
+method: probed
+source: live HTTP probes against uu.nl hosts plus first-party source in github.com/UtrechtUniversity
+standards:
+
+- standard: oai-pmh
+  status: conformant
+  operator: institution
+  detail: >-
+    The Utrecht University Repository runs DSpace 9.0 and answers the OAI-PMH 2.0 verb set on the
+    institution's own host. Identify returns repositoryName "Utrecht University Repository",
+    adminEmail repository@uu.nl, earliestDatestamp 2001-01-03. ListMetadataFormats advertises 16
+    prefixes including oai_dc, mods, mets, ore, didl, nl_didl, rioxx, etdms and rdf.
+  evidence:
+  - url: https://dspace.library.uu.nl/server/oai/request?verb=Identify
+    status: 200
+    note: OAI-PMH 2.0 XML; protocolVersion 2.0
+  - url: https://dspace.library.uu.nl/server/oai/request?verb=ListMetadataFormats
+    status: 200
+    note: 16 metadata prefixes
+  - url: https://dspace.library.uu.nl/oai/openaire?verb=Identify
+    status: 200
+    note: OpenAIRE-profiled OAI set
+  generated: '2026-08-30'
+  method: probed
+
+- standard: oai-pmh
+  status: conformant
+  operator: tenant
+  detail: >-
+    Utrecht's Elsevier Pure CRIS also exposes OAI-PMH, on a uu.nl host but from vendor software.
+    Identify returns repositoryName "Utrecht University Pure OAI Repository", adminEmail pure@uu.nl.
+    Formats include oai_cerif_openaire. Recorded as tenant: the data is Utrecht's, the contract is
+    Elsevier's.
+  evidence:
+  - url: https://research-portal.uu.nl/ws/oai?verb=Identify
+    status: 200
+    note: Pure OAI repository, adminEmail pure@uu.nl
+  - url: https://research-portal.uu.nl/ws/oai?verb=ListMetadataFormats
+    status: 200
+    note: includes oai_cerif_openaire
+  generated: '2026-08-30'
+  method: probed
+
+- standard: saml
+  status: conformant
+  operator: institution
+  detail: >-
+    Utrecht University operates its own SAML 2.0 identity provider and publishes signed
+    EntityDescriptor metadata at login.uu.nl. The entityID
+    https://login.uu.nl/nidp/saml2/metadata is registered in the SURFconext national federation,
+    which is an eduGAIN participant — so the entry is reachable internationally as well as
+    nationally. This is machine-readable, institution-operated, and independent of any vendor.
+  evidence:
+  - url: https://login.uu.nl/nidp/saml2/metadata
+    status: 200
+    note: 23,993 bytes of signed SAML 2.0 md:EntityDescriptor
+  - url: https://metadata.surfconext.nl/idps-metadata.xml
+    status: 200
+    note: SURFconext federation metadata carrying entityID="https://login.uu.nl/nidp/saml2/metadata"
+  generated: '2026-08-30'
+  method: probed
+
+- standard: shibboleth
+  status: partial
+  operator: institution
+  detail: >-
+    Utrecht federates through SURFconext, the Dutch R&E federation, using SAML 2.0. The IdP is
+    NetIQ/Novell Access Manager (the /nidp/ path), not the Shibboleth IdP implementation, so this
+    is recorded as partial: the federation posture is present and standards-based, the specific
+    Shibboleth software is not evidenced.
+  evidence:
+  - url: https://login.uu.nl/nidp/saml2/metadata
+    status: 200
+    note: /nidp/ path indicates NetIQ Access Manager, not Shibboleth IdP
+  generated: '2026-08-30'
+  method: probed
+
+- standard: datacite
+  status: conformant
+  operator: institution
+  detail: >-
+    Yoda, the research data management platform Utrecht University authors and operates, registers
+    DOIs and DOI metadata directly against the DataCite REST API. datacite.py in the Yoda ruleset
+    ("Copyright (c) 2019-2026, Utrecht University", GPLv3) implements metadata_post against
+    {datacite_rest_api_url}/dois. The vault publication workflow in the OpenAPIs in this repo
+    (vault_submit, vault_approve, vault_depublish) is the workflow that drives it.
+  evidence:
+  - url: https://raw.githubusercontent.com/UtrechtUniversity/yoda-ruleset/development/datacite.py
+    status: 200
+    note: '"""Functions for communicating with DataCite and some utilities."""; metadata_post POSTs to /dois'
+  - url: https://raw.githubusercontent.com/UtrechtUniversity/yoda-ruleset/development/publication.py
+    status: 200
+    note: publication workflow that calls the DataCite client
+  generated: '2026-08-30'
+  method: probed
+
+not_evidenced:
+  note: >-
+    Probed and NOT found. Listed so a later run does not re-hunt them, and so the absence is not
+    read as an un-run check. None of these are held against the institution.
+  standards:
+  - scim
+  - lti
+  - oneroster
+  - ed-fi
+  - caliper
+  - qti
+  - orcid
+  - crossref
+  detail: >-
+    No SCIM, LTI, OneRoster, Ed-Fi, Caliper or QTI surface was reachable on any uu.nl host — the
+    learning-platform and student-administration systems (OSIRIS at osiris.uu.nl returns 403 to
+    unauthenticated clients) are behind SolisID SSO with no public contract. ORCID: the DSpace 9
+    ORCID integration endpoints are not enabled (/server/api/eperson/orcidqueues returns 404) and
+    the default Yoda metadata schema was not retrievable, so no ORCID conformance is claimed even
+    though ORCID is near-universal in Dutch CRIS practice. Crossref is not used; Utrecht mints
+    through DataCite.
+  evidence:
+  - url: https://osiris.uu.nl/
+    status: 403
+  - url: https://dspace.library.uu.nl/server/api/eperson/orcidqueues
+    status: 404

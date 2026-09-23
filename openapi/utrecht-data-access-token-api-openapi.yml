@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin data_access_token API
+  title: Yoda core Data Access Token API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,9 +18,7 @@ paths:
     post:
       tags:
       - data_access_token
-      summary: 'Generates a token for user authentication.
-
-        '
+      summary: Generates a token for user authentication
       requestBody:
         required: true
         content:
@@ -32,7 +30,6 @@ paths:
                   type: string
                   description: Optional label of the token
                   default: ''''''
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -44,21 +41,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postTokenGenerate
+      x-operation-id-source: derived
   /token_load:
     post:
       tags:
       - data_access_token
-      summary: 'Loads valid tokens of user.
-
-        '
+      summary: Loads valid tokens of user
       requestBody:
         required: true
         content:
@@ -77,21 +74,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postTokenLoad
+      x-operation-id-source: derived
   /token_delete:
     post:
       tags:
       - data_access_token
-      summary: 'Deletes a token of the user.
-
-        '
+      summary: Deletes a token of the user
       requestBody:
         required: true
         content:
@@ -105,7 +102,6 @@ paths:
                   type: string
                   description: Label of the token
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -117,21 +113,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postTokenDelete
+      x-operation-id-source: derived
   /token_delete_expired:
     post:
       tags:
       - data_access_token
-      summary: 'Deletes expired tokens of current user
-
-        '
+      summary: Deletes expired tokens of current user
       requestBody:
         required: true
         content:
@@ -150,24 +146,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postTokenDeleteExpired
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -184,8 +182,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

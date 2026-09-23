@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin publication_troubleshoot API
+  title: Yoda core Publication Troubleshoot API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,11 +18,7 @@ paths:
     post:
       tags:
       - publication_troubleshoot
-      summary: 'Wrapper for the batch script for troubleshooting published data packages.
-
-        Runs a subset of the tests since "technicaladmin" is usually more restricted than "rods".
-
-        '
+      summary: Wrapper for the batch script for troubleshooting published data packages.
       requestBody:
         required: true
         content:
@@ -38,17 +34,14 @@ paths:
                   type: string
                   description: A string representing a specific data package path or all packages with failed publications.
                   default: null
-                  nullable: false
                 log_file:
                   type: boolean
                   description: A boolean representing to write results in log.
                   default: null
-                  nullable: false
                 offline:
                   type: boolean
                   description: A boolean representing whether to perform all checks without connecting to external servers.
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -60,24 +53,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postBatchTroubleshootPublishedDataPackages
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -94,8 +89,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

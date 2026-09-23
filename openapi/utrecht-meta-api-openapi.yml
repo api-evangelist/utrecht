@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin meta API
+  title: Yoda core Meta API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,13 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: meta
+- name: Meta
 paths:
   /meta_remove:
     post:
       tags:
-      - meta
-      summary: Remove a collection's metadata JSON, if it exists.
+      - Meta
+      summary: Remove a collection's metadata JSON, if it exists
       requestBody:
         required: true
         content:
@@ -32,7 +32,6 @@ paths:
                   type: string
                   description: (undocumented)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -44,21 +43,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postMetaRemove
+      x-operation-id-source: derived
   /meta_clone_file:
     post:
       tags:
-      - meta
-      summary: 'Clone a metadata file from a parent collection to a subcollection.
-
-        '
+      - Meta
+      summary: Clone a metadata file from a parent collection to a subcollection
       requestBody:
         required: true
         content:
@@ -72,7 +71,6 @@ paths:
                   type: string
                   description: Target collection (where the metadata is copied to)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -84,24 +82,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postMetaCloneFile
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -118,8 +118,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

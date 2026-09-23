@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_submit",
+            "url": "https://portal.yoda.uu.nl/api/vault_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_approve",
+            "url": "https://portal.yoda.uu.nl/api/vault_approve",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_cancel",
+            "url": "https://portal.yoda.uu.nl/api/vault_cancel",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_depublish",
+            "url": "https://portal.yoda.uu.nl/api/vault_depublish",
             "body": {
               "type": "json",
               "data": "{}"
@@ -86,7 +86,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_republish",
+            "url": "https://portal.yoda.uu.nl/api/vault_republish",
             "body": {
               "type": "json",
               "data": "{}"
@@ -101,7 +101,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_copy_to_research",
+            "url": "https://portal.yoda.uu.nl/api/vault_copy_to_research",
             "body": {
               "type": "json",
               "data": "{}"
@@ -116,7 +116,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_preservable_formats_lists",
+            "url": "https://portal.yoda.uu.nl/api/vault_preservable_formats_lists",
             "body": {
               "type": "json",
               "data": "{}"
@@ -131,7 +131,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_unpreservable_files",
+            "url": "https://portal.yoda.uu.nl/api/vault_unpreservable_files",
             "body": {
               "type": "json",
               "data": "{}"
@@ -146,7 +146,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_system_metadata",
+            "url": "https://portal.yoda.uu.nl/api/vault_system_metadata",
             "body": {
               "type": "json",
               "data": "{}"
@@ -161,7 +161,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_collection_details",
+            "url": "https://portal.yoda.uu.nl/api/vault_collection_details",
             "body": {
               "type": "json",
               "data": "{}"
@@ -176,7 +176,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_get_package_by_reference",
+            "url": "https://portal.yoda.uu.nl/api/vault_get_package_by_reference",
             "body": {
               "type": "json",
               "data": "{}"
@@ -191,7 +191,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_get_landingpage_data",
+            "url": "https://portal.yoda.uu.nl/api/vault_get_landingpage_data",
             "body": {
               "type": "json",
               "data": "{}"
@@ -206,7 +206,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_get_publication_terms",
+            "url": "https://portal.yoda.uu.nl/api/vault_get_publication_terms",
             "body": {
               "type": "json",
               "data": "{}"
@@ -221,7 +221,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/grant_read_access_research_group",
+            "url": "https://portal.yoda.uu.nl/api/grant_read_access_research_group",
             "body": {
               "type": "json",
               "data": "{}"
@@ -236,7 +236,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/revoke_read_access_research_group",
+            "url": "https://portal.yoda.uu.nl/api/revoke_read_access_research_group",
             "body": {
               "type": "json",
               "data": "{}"
@@ -251,7 +251,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_get_published_packages",
+            "url": "https://portal.yoda.uu.nl/api/vault_get_published_packages",
             "body": {
               "type": "json",
               "data": "{}"

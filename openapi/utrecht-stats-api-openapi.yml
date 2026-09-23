@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin stats API
+  title: Yoda core Stats API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,15 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: stats
+- name: Stats
 paths:
   /resource_browse_group_data:
     post:
       tags:
-      - stats
-      summary: 'Get paginated group data groupname / size
-
-        '
+      - Stats
+      summary: Get paginated group data groupname / size
       requestBody:
         required: true
         content:
@@ -32,27 +30,22 @@ paths:
                   type: string
                   description: Column to sort on ('name', 'modified' or size)
                   default: '''name'''
-                  nullable: false
                 sort_order:
                   type: string
                   description: Column sort order ('asc' or 'desc')
                   default: '''asc'''
-                  nullable: false
                 offset:
                   type: integer
                   description: Offset to start browsing from
                   default: '0'
-                  nullable: false
                 limit:
                   type: integer
                   description: Limit number of results
                   default: '10'
-                  nullable: false
                 search_groups:
                   type: string
                   description: Search specific groups
                   default: ''''''
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -64,21 +57,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postResourceBrowseGroupData
+      x-operation-id-source: derived
   /resource_full_year_differentiated_group_storage:
     post:
       tags:
-      - stats
-      summary: 'Return the full range of registered storage data differentiated into vault/research/revision/total.
-
-        '
+      - Stats
+      summary: Return the full range of registered storage data differentiated into…
       requestBody:
         required: true
         content:
@@ -92,7 +85,6 @@ paths:
                   type: string
                   description: Group that is searched for storage data
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -104,23 +96,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postResourceFullYearDifferentiatedGroupStorage
+      x-operation-id-source: derived
   /resource_category_stats:
     post:
       tags:
-      - stats
-      summary: 'Collect storage stats of last month for categories.
-
-        Storage is summed up for each category.
-
-        '
+      - Stats
+      summary: Collect storage stats of last month for categories.
       requestBody:
         required: true
         content:
@@ -139,21 +129,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postResourceCategoryStats
+      x-operation-id-source: derived
   /resource_monthly_category_stats:
     post:
       tags:
-      - stats
-      summary: 'Collect storage stats for all twelve months based upon categories a user is datamanager of.
-
-        '
+      - Stats
+      summary: Collect storage stats for all twelve months based upon categories a user is…
       requestBody:
         required: true
         content:
@@ -172,24 +162,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postResourceMonthlyCategoryStats
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -206,8 +198,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

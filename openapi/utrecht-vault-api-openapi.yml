@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin vault API
+  title: Yoda core Vault API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,15 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: vault
+- name: Vault
 paths:
   /vault_submit:
     post:
       tags:
-      - vault
-      summary: 'Submit data package for publication.
-
-        '
+      - Vault
+      summary: Submit data package for publication
       requestBody:
         required: true
         content:
@@ -34,12 +32,12 @@ paths:
                   type: string
                   description: Collection of data package to submit
                   default: null
-                  nullable: false
                 previous_version:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: Path to previous version of data package in the vault
                   default: None
-                  nullable: true
       responses:
         '200':
           description: Success
@@ -51,21 +49,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultSubmit
+      x-operation-id-source: derived
   /vault_approve:
     post:
       tags:
-      - vault
-      summary: 'Approve data package for publication.
-
-        '
+      - Vault
+      summary: Approve data package for publication
       requestBody:
         required: true
         content:
@@ -79,7 +77,6 @@ paths:
                   type: string
                   description: Collection of data package to approve
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -91,21 +88,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultApprove
+      x-operation-id-source: derived
   /vault_cancel:
     post:
       tags:
-      - vault
-      summary: 'Cancel submit of data package.
-
-        '
+      - Vault
+      summary: Cancel submit of data package
       requestBody:
         required: true
         content:
@@ -119,7 +116,6 @@ paths:
                   type: string
                   description: Collection of data package to cancel submit
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -131,21 +127,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultCancel
+      x-operation-id-source: derived
   /vault_depublish:
     post:
       tags:
-      - vault
-      summary: 'Depublish data package.
-
-        '
+      - Vault
+      summary: Depublish data package
       requestBody:
         required: true
         content:
@@ -159,7 +155,6 @@ paths:
                   type: string
                   description: Collection of data package to depublish
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -171,21 +166,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultDepublish
+      x-operation-id-source: derived
   /vault_republish:
     post:
       tags:
-      - vault
-      summary: 'Republish data package.
-
-        '
+      - Vault
+      summary: Republish data package
       requestBody:
         required: true
         content:
@@ -199,7 +194,6 @@ paths:
                   type: string
                   description: Collection of data package to republish
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -211,21 +205,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultRepublish
+      x-operation-id-source: derived
   /vault_copy_to_research:
     post:
       tags:
-      - vault
-      summary: 'Copy data package from vault to research space.
-
-        '
+      - Vault
+      summary: Copy data package from vault to research space
       requestBody:
         required: true
         content:
@@ -240,12 +234,10 @@ paths:
                   type: string
                   description: Collection of data package to copy
                   default: null
-                  nullable: false
                 coll_target:
                   type: string
                   description: Collection to copy data package to
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -257,21 +249,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultCopyToResearch
+      x-operation-id-source: derived
   /vault_preservable_formats_lists:
     post:
       tags:
-      - vault
-      summary: 'Retrieve lists of preservable file formats on the system.
-
-        '
+      - Vault
+      summary: Retrieve lists of preservable file formats on the system
       requestBody:
         required: true
         content:
@@ -290,21 +282,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultPreservableFormatsLists
+      x-operation-id-source: derived
   /vault_unpreservable_files:
     post:
       tags:
-      - vault
-      summary: 'Retrieve list of unpreservable file formats in a collection.
-
-        '
+      - Vault
+      summary: Retrieve list of unpreservable file formats in a collection
       requestBody:
         required: true
         content:
@@ -319,12 +311,10 @@ paths:
                   type: string
                   description: Collection of folder to check
                   default: null
-                  nullable: false
                 list_name:
                   type: string
                   description: Name of preservable file format list
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -336,21 +326,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultUnpreservableFiles
+      x-operation-id-source: derived
   /vault_system_metadata:
     post:
       tags:
-      - vault
-      summary: 'Return system metadata of a vault collection.
-
-        '
+      - Vault
+      summary: Return system metadata of a vault collection
       requestBody:
         required: true
         content:
@@ -364,7 +354,6 @@ paths:
                   type: string
                   description: Path to data package
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -376,21 +365,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultSystemMetadata
+      x-operation-id-source: derived
   /vault_collection_details:
     post:
       tags:
-      - vault
-      summary: 'Return details of a vault collection.
-
-        '
+      - Vault
+      summary: Return details of a vault collection
       requestBody:
         required: true
         content:
@@ -404,7 +393,6 @@ paths:
                   type: string
                   description: Path to data package
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -416,21 +404,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultCollectionDetails
+      x-operation-id-source: derived
   /vault_get_package_by_reference:
     post:
       tags:
-      - vault
-      summary: 'Return path to data package with provided reference (UUID4).
-
-        '
+      - Vault
+      summary: Return path to data package with provided reference (UUID4)
       requestBody:
         required: true
         content:
@@ -444,7 +432,6 @@ paths:
                   type: string
                   description: Data Package Reference (UUID4)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -456,21 +443,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultGetPackageByReference
+      x-operation-id-source: derived
   /vault_get_landingpage_data:
     post:
       tags:
-      - vault
-      summary: 'Retrieve landingpage data of data package.
-
-        '
+      - Vault
+      summary: Retrieve landingpage data of data package
       requestBody:
         required: true
         content:
@@ -484,7 +471,6 @@ paths:
                   type: string
                   description: Collection to retrieve landingpage data from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -496,19 +482,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultGetLandingpageData
+      x-operation-id-source: derived
   /vault_get_publication_terms:
     post:
       tags:
-      - vault
-      summary: Retrieve the publication terms.
+      - Vault
+      summary: Retrieve the publication terms
       requestBody:
         required: true
         content:
@@ -527,21 +515,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultGetPublicationTerms
+      x-operation-id-source: derived
   /grant_read_access_research_group:
     post:
       tags:
-      - vault
-      summary: 'Grant read rights of research group for datapackage in vault.
-
-        '
+      - Vault
+      summary: Grant read rights of research group for datapackage in vault
       requestBody:
         required: true
         content:
@@ -555,7 +543,6 @@ paths:
                   type: string
                   description: Collection of data package to remove read rights from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -567,21 +554,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGrantReadAccessResearchGroup
+      x-operation-id-source: derived
   /revoke_read_access_research_group:
     post:
       tags:
-      - vault
-      summary: 'Revoke read rights of research group for datapackage in vault.
-
-        '
+      - Vault
+      summary: Revoke read rights of research group for datapackage in vault
       requestBody:
         required: true
         content:
@@ -595,7 +582,6 @@ paths:
                   type: string
                   description: Collection of data package to remove read rights from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -607,21 +593,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postRevokeReadAccessResearchGroup
+      x-operation-id-source: derived
   /vault_get_published_packages:
     post:
       tags:
-      - vault
-      summary: 'Get the path and DOI of latest versions of published data package in a vault.
-
-        '
+      - Vault
+      summary: Get the path and DOI of latest versions of published data package in a vault
       requestBody:
         required: true
         content:
@@ -635,7 +621,6 @@ paths:
                   type: string
                   description: Path of vault with data packages
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -647,24 +632,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultGetPublishedPackages
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -681,8 +668,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

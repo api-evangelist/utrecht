@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin datarequest API
+  title: Yoda Datarequest API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,9 +18,7 @@ paths:
     post:
       tags:
       - datarequest
-      summary: 'Wrapper around datarequest_action_permitted.
-
-        '
+      summary: Wrapper around datarequest_action_permitted
       requestBody:
         required: true
         content:
@@ -36,18 +34,15 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 roles:
                   type: array
                   description: 'List of permitted roles (possible values: PM, ED, DM, DAC, OWN, REV)'
                   default: null
-                  nullable: false
                   items: {}
                 statuses:
                   type: array
                   description: List of permitted current data request statuses or None (check skipped)
                   default: null
-                  nullable: false
                   items: {}
       responses:
         '200':
@@ -60,19 +55,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestActionPermitted
+      x-operation-id-source: derived
   /datarequest_roles_get:
     post:
       tags:
       - datarequest
-      summary: "Get roles of invoking user.\n                   if this parameter is missing)\n"
+      summary: Get roles of invoking user. if this parameter is missing)
       requestBody:
         required: true
         content:
@@ -81,10 +78,11 @@ paths:
               type: object
               properties:
                 request_id:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: Unique identifier of the data request (OWN and REV roles will not be checked
                   default: None
-                  nullable: true
       responses:
         '200':
           description: Success
@@ -96,19 +94,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestRolesGet
+      x-operation-id-source: derived
   /datarequest_schema_get:
     post:
       tags:
       - datarequest
-      summary: ''
+      summary: Create datarequest schema get
       requestBody:
         required: true
         content:
@@ -122,12 +122,10 @@ paths:
                   type: string
                   description: (undocumented)
                   default: null
-                  nullable: false
                 version:
                   type: string
                   description: (undocumented)
                   default: SCHEMA_VERSION
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -139,21 +137,22 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      x-summary-source: derived
+      operationId: postDatarequestSchemaGet
+      x-operation-id-source: derived
   /datarequest_resubmission_id_get:
     post:
       tags:
       - datarequest
-      summary: 'Given a request ID, get the request ID of the associated resubmitted data request.
-
-        '
+      summary: Given a request ID, get the request ID of the associated resubmitted data…
       requestBody:
         required: true
         content:
@@ -167,7 +166,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -179,19 +177,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestResubmissionIdGet
+      x-operation-id-source: derived
   /datarequest_browse:
     post:
       tags:
       - datarequest
-      summary: "Get paginated datarequests, including size/modify date information.\n                    show non-archived data requests\n                    be reviewed\n"
+      summary: Get paginated datarequests, including size/modify date information.
       requestBody:
         required: true
         content:
@@ -203,32 +203,26 @@ paths:
                   type: string
                   description: Column to sort on ('name', 'modified')
                   default: '''name'''
-                  nullable: false
                 sort_order:
                   type: string
                   description: Column sort order ('asc' or 'desc')
                   default: '''asc'''
-                  nullable: false
                 offset:
                   type: integer
                   description: Offset to start browsing from
                   default: '0'
-                  nullable: false
                 limit:
                   type: integer
                   description: Limit number of results
                   default: '10'
-                  nullable: false
                 archived:
                   type: boolean
                   description: If true, show archived (i.e. rejected) data requests only. If false, only
                   default: 'False'
-                  nullable: false
                 dacrequests:
                   type: boolean
                   description: If true, show a DAC member's own data requests (instead of data requests to
                   default: 'True'
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -240,21 +234,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestBrowse
+      x-operation-id-source: derived
   /datarequest_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist a data request to disk.
-
-        '
+      summary: Persist a data request to disk
       requestBody:
         required: true
         content:
@@ -269,17 +263,16 @@ paths:
                   type: object
                   description: Contents of the data request
                   default: null
-                  nullable: false
                 draft:
                   type: boolean
                   description: Boolean specifying whether the data request should be saved as draft
                   default: null
-                  nullable: false
                 draft_request_id:
-                  type: string
+                  type:
+                  - string
+                  - 'null'
                   description: Unique identifier of the draft data request
                   default: None
-                  nullable: true
       responses:
         '200':
           description: Success
@@ -291,21 +284,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestSubmit
+      x-operation-id-source: derived
   /datarequest_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve a data request.
-
-        '
+      summary: Retrieve a data request
       requestBody:
         required: true
         content:
@@ -319,7 +312,6 @@ paths:
                   type: integer
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -331,21 +323,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestGet
+      x-operation-id-source: derived
   /datarequest_attachment_upload_permission:
     post:
       tags:
       - datarequest
-      summary: '                   revoked ("grantread" or "revoke")
-
-        '
+      summary: revoked ("grantread" or "revoke")
       requestBody:
         required: true
         content:
@@ -360,12 +352,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 action:
                   type: string
                   description: String specifying whether write permission must be granted ("grant") or
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -377,21 +367,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAttachmentUploadPermission
+      x-operation-id-source: derived
   /datarequest_attachment_post_upload_actions:
     post:
       tags:
       - datarequest
-      summary: 'Grant read permissions on the attachment to the owner of the associated data request.
-
-        :param filename:   Filename of attachment'
+      summary: Grant read permissions on the attachment to the owner of the associated data…
       requestBody:
         required: true
         content:
@@ -406,12 +396,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 filename:
                   type: string
                   description: Filename of attachment
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -423,21 +411,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAttachmentPostUploadActions
+      x-operation-id-source: derived
   /datarequest_attachments_get:
     post:
       tags:
       - datarequest
-      summary: 'Get all attachments of a given data request.
-
-        '
+      summary: Get all attachments of a given data request
       requestBody:
         required: true
         content:
@@ -451,7 +439,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -463,21 +450,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAttachmentsGet
+      x-operation-id-source: derived
   /datarequest_attachments_submit:
     post:
       tags:
       - datarequest
-      summary: 'Finalize the submission of uploaded attachments
-
-        :param request_id: Unique identifier of the data request'
+      summary: 'Finalize the submission of uploaded attachments :param request_id: Unique…'
       requestBody:
         required: true
         content:
@@ -491,7 +478,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -503,21 +489,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAttachmentsSubmit
+      x-operation-id-source: derived
   /datarequest_preliminary_review_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist a preliminary review to disk.
-
-        '
+      summary: Persist a preliminary review to disk
       requestBody:
         required: true
         content:
@@ -532,12 +518,10 @@ paths:
                   type: object
                   description: Contents of the preliminary review
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -549,21 +533,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestPreliminaryReviewSubmit
+      x-operation-id-source: derived
   /datarequest_preliminary_review_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve a preliminary review.
-
-        '
+      summary: Retrieve a preliminary review
       requestBody:
         required: true
         content:
@@ -577,7 +561,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -589,21 +572,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestPreliminaryReviewGet
+      x-operation-id-source: derived
   /datarequest_datamanager_review_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist a datamanager review to disk.
-
-        '
+      summary: Persist a datamanager review to disk
       requestBody:
         required: true
         content:
@@ -618,12 +601,10 @@ paths:
                   type: object
                   description: Contents of the datamanager review
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -635,21 +616,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestDatamanagerReviewSubmit
+      x-operation-id-source: derived
   /datarequest_datamanager_review_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve a data manager review.
-
-        '
+      summary: Retrieve a data manager review
       requestBody:
         required: true
         content:
@@ -663,7 +644,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -675,19 +655,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestDatamanagerReviewGet
+      x-operation-id-source: derived
   /datarequest_dac_members_get:
     post:
       tags:
       - datarequest
-      summary: ''
+      summary: Create datarequest dac members get
       requestBody:
         required: true
         content:
@@ -701,7 +683,6 @@ paths:
                   type: string
                   description: (undocumented)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -713,21 +694,22 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      x-summary-source: derived
+      operationId: postDatarequestDacMembersGet
+      x-operation-id-source: derived
   /datarequest_assignment_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist an assignment to disk.
-
-        '
+      summary: Persist an assignment to disk
       requestBody:
         required: true
         content:
@@ -742,12 +724,10 @@ paths:
                   type: object
                   description: Contents of the assignment
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -759,21 +739,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAssignmentSubmit
+      x-operation-id-source: derived
   /datarequest_assignment_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve assignment.
-
-        '
+      summary: Retrieve assignment
       requestBody:
         required: true
         content:
@@ -787,7 +767,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -799,21 +778,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestAssignmentGet
+      x-operation-id-source: derived
   /datarequest_review_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist a data request review to disk.
-
-        '
+      summary: Persist a data request review to disk
       requestBody:
         required: true
         content:
@@ -828,12 +807,10 @@ paths:
                   type: object
                   description: Contents of the review
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -845,21 +822,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestReviewSubmit
+      x-operation-id-source: derived
   /datarequest_reviews_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve a data request review.
-
-        '
+      summary: Retrieve a data request review
       requestBody:
         required: true
         content:
@@ -873,7 +850,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -885,21 +861,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestReviewsGet
+      x-operation-id-source: derived
   /datarequest_evaluation_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist an evaluation to disk.
-
-        '
+      summary: Persist an evaluation to disk
       requestBody:
         required: true
         content:
@@ -914,12 +890,10 @@ paths:
                   type: object
                   description: Contents of the evaluation
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -931,21 +905,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestEvaluationSubmit
+      x-operation-id-source: derived
   /datarequest_approval_conditions_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve approval conditions
-
-        '
+      summary: Retrieve approval conditions
       requestBody:
         required: true
         content:
@@ -959,7 +933,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -971,21 +944,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestApprovalConditionsGet
+      x-operation-id-source: derived
   /datarequest_evaluation_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve an evaluation.
-
-        '
+      summary: Retrieve an evaluation
       requestBody:
         required: true
         content:
@@ -999,7 +972,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1011,21 +983,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestEvaluationGet
+      x-operation-id-source: derived
   /datarequest_feedback_get:
     post:
       tags:
       - datarequest
-      summary: 'Get feedback for researcher
-
-        '
+      summary: Get feedback for researcher
       requestBody:
         required: true
         content:
@@ -1039,7 +1011,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1051,21 +1022,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestFeedbackGet
+      x-operation-id-source: derived
   /datarequest_preregistration_submit:
     post:
       tags:
       - datarequest
-      summary: 'Persist a preregistration to disk.
-
-        '
+      summary: Persist a preregistration to disk
       requestBody:
         required: true
         content:
@@ -1080,12 +1051,10 @@ paths:
                   type: object
                   description: Contents of the preregistration
                   default: null
-                  nullable: false
                 request_id:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1097,21 +1066,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestPreregistrationSubmit
+      x-operation-id-source: derived
   /datarequest_preregistration_get:
     post:
       tags:
       - datarequest
-      summary: 'Retrieve a preregistration.
-
-        '
+      summary: Retrieve a preregistration
       requestBody:
         required: true
         content:
@@ -1125,7 +1094,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1137,21 +1105,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestPreregistrationGet
+      x-operation-id-source: derived
   /datarequest_preregistration_confirm:
     post:
       tags:
       - datarequest
-      summary: 'Set the status of a submitted datarequest to PREREGISTRATION_CONFIRMED.
-
-        :param request_id: Unique identifier of the data request'
+      summary: Set the status of a submitted datarequest to PREREGISTRATION_CONFIRMED.
       requestBody:
         required: true
         content:
@@ -1165,7 +1133,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1177,21 +1144,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestPreregistrationConfirm
+      x-operation-id-source: derived
   /datarequest_dta_upload_permission:
     post:
       tags:
       - datarequest
-      summary: '                   revoked ("revoke")
-
-        '
+      summary: revoked ("revoke")
       requestBody:
         required: true
         content:
@@ -1206,12 +1173,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 action:
                   type: string
                   description: String specifying whether write permission must be granted ("grant") or
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1223,21 +1188,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestDtaUploadPermission
+      x-operation-id-source: derived
   /datarequest_dta_post_upload_actions:
     post:
       tags:
       - datarequest
-      summary: 'Grant read permissions on the DTA to the owner of the associated data request.
-
-        '
+      summary: Grant read permissions on the DTA to the owner of the associated data request
       requestBody:
         required: true
         content:
@@ -1252,12 +1217,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 filename:
                   type: string
                   description: Filename of DTA
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1269,19 +1232,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestDtaPostUploadActions
+      x-operation-id-source: derived
   /datarequest_dta_path_get:
     post:
       tags:
       - datarequest
-      summary: ''
+      summary: Create datarequest dta path get
       requestBody:
         required: true
         content:
@@ -1295,7 +1260,6 @@ paths:
                   type: string
                   description: (undocumented)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1307,21 +1271,22 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      x-summary-source: derived
+      operationId: postDatarequestDtaPathGet
+      x-operation-id-source: derived
   /datarequest_signed_dta_upload_permission:
     post:
       tags:
       - datarequest
-      summary: '                   revoked ("revoke")
-
-        '
+      summary: revoked ("revoke")
       requestBody:
         required: true
         content:
@@ -1336,12 +1301,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 action:
                   type: string
                   description: String specifying whether write permission must be granted ("grant") or
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1353,21 +1316,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestSignedDtaUploadPermission
+      x-operation-id-source: derived
   /datarequest_signed_dta_post_upload_actions:
     post:
       tags:
       - datarequest
-      summary: 'Grant read permissions on the signed DTA to the datamanagers group.
-
-        '
+      summary: Grant read permissions on the signed DTA to the datamanagers group
       requestBody:
         required: true
         content:
@@ -1382,12 +1345,10 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
                 filename:
                   type: string
                   description: Filename of signed DTA
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1399,21 +1360,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestSignedDtaPostUploadActions
+      x-operation-id-source: derived
   /datarequest_signed_dta_path_get:
     post:
       tags:
       - datarequest
-      summary: 'Get path to signed DTA
-
-        '
+      summary: Get path to signed DTA
       requestBody:
         required: true
         content:
@@ -1427,7 +1388,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1439,21 +1399,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestSignedDtaPathGet
+      x-operation-id-source: derived
   /datarequest_data_ready:
     post:
       tags:
       - datarequest
-      summary: 'Set the status of a submitted datarequest to DATA_READY.
-
-        :param request_id: Unique identifier of the data request'
+      summary: Set the status of a submitted datarequest to DATA_READY.
       requestBody:
         required: true
         content:
@@ -1467,7 +1427,6 @@ paths:
                   type: string
                   description: Unique identifier of the data request
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -1479,24 +1438,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postDatarequestDataReady
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -1513,8 +1474,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

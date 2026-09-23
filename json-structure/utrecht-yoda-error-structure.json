@@ -1,4 +1,9 @@
 {
+  "x-method": "derived",
+  "x-derived-from": "json-schema/utrecht-yoda-error-schema.json",
+  "x-source-url": "https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/tools/api/generate-openapi.py",
+  "x-provenance": "Derived from the Yoda OpenAPIs in this repo (openapi/_original/utrecht-yoda-core.yaml and utrecht-yoda-datarequest.yaml), which are Utrecht University's own generated documents. Not published by Utrecht University.",
+  "x-generated": "2026-08-30",
   "$schema": "https://json-structure.org/meta/core/v0",
   "$id": "https://raw.githubusercontent.com/api-evangelist/utrecht/main/json-structure/utrecht-yoda-error-structure.json",
   "name": "YodaErrorResult",
@@ -14,9 +19,15 @@
       "description": "Holds a human-readable error description."
     },
     "data": {
-      "type": ["object", "null"],
+      "type": [
+        "object",
+        "null"
+      ],
       "description": "Empty on error."
     }
   },
-  "required": ["status", "status_info"]
+  "required": [
+    "status",
+    "status_info"
+  ]
 }

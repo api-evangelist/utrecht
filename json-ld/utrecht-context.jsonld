@@ -1,4 +1,9 @@
 {
+  "x-method": "derived",
+  "x-derived-from": "openapi/_original/utrecht-yoda-core.yaml",
+  "x-source-url": "https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/tools/api/generate-openapi.py",
+  "x-provenance": "Derived from the Yoda OpenAPIs in this repo (openapi/_original/utrecht-yoda-core.yaml and utrecht-yoda-datarequest.yaml), which are Utrecht University's own generated documents. Not published by Utrecht University.",
+  "x-generated": "2026-08-30",
   "@context": {
     "@version": 1.1,
     "schema": "https://schema.org/",
@@ -9,14 +14,12 @@
     "Organization": "schema:CollegeOrUniversity",
     "department": "schema:department",
     "sameAs": "schema:sameAs",
-
     "Repository": "uu:Repository",
     "oaiBaseURL": {
       "@id": "uu:oaiBaseURL",
       "@type": "@id"
     },
     "protocolVersion": "uu:protocolVersion",
-
     "Api": "schema:WebAPI",
     "documentation": {
       "@id": "schema:documentation",
@@ -26,12 +29,10 @@
       "@id": "uu:endpoint",
       "@type": "@id"
     },
-
     "Result": "uu:Result",
     "status": "uu:status",
     "status_info": "uu:statusInfo",
     "data": "uu:data",
-
     "Collection": "uu:Collection",
     "coll": "uu:collectionPath",
     "Vault": "uu:Vault",

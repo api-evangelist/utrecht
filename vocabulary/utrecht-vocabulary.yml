@@ -1,3 +1,7 @@
+# Derived from the Yoda OpenAPIs in this repo (openapi/_original/utrecht-yoda-core.yaml and utrecht-yoda-datarequest.yaml), which are Utrecht University's own generated documents. Not published by Utrecht University.
+# x-method: derived
+# x-derived-from: openapi/_original/utrecht-yoda-core.yaml
+# x-generated: '2026-08-30'
 vocabulary:
   name: Utrecht University Yoda API Vocabulary
   description: >-

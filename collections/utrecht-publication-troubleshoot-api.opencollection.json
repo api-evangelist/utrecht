@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/batch_troubleshoot_published_data_packages",
+            "url": "https://portal.yoda.uu.nl/api/batch_troubleshoot_published_data_packages",
             "body": {
               "type": "json",
               "data": "{}"

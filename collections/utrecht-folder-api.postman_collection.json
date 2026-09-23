@@ -1402,7 +1402,7 @@
   "variable": [
     {
       "type": "string",
-      "value": "https://portal.yoda.test/api",
+      "value": "https://portal.yoda.uu.nl/api",
       "key": "baseUrl"
     }
   ],

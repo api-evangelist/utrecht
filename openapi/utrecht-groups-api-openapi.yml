@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin groups API
+  title: Yoda core Groups API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,15 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: groups
+- name: Groups
 paths:
   /group_get_user_role:
     post:
       tags:
-      - groups
-      summary: 'Get role of user in group.
-
-        '
+      - Groups
+      summary: Get role of user in group
       requestBody:
         required: true
         content:
@@ -35,12 +33,10 @@ paths:
                   type: string
                   description: User to return type of
                   default: null
-                  nullable: false
                 group_name:
                   type: string
                   description: Group name of user
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -52,21 +48,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupGetUserRole
+      x-operation-id-source: derived
   /group_data:
     post:
       tags:
-      - groups
-      summary: 'Retrieve group data as hierarchy for user.
-
-        '
+      - Groups
+      summary: Retrieve group data as hierarchy for user
       requestBody:
         required: true
         content:
@@ -85,21 +81,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupData
+      x-operation-id-source: derived
   /group_process_csv:
     post:
       tags:
-      - groups
-      summary: 'Process contents of CSV file containing group definitions.
-
-        '
+      - Groups
+      summary: Process contents of CSV file containing group definitions
       requestBody:
         required: true
         content:
@@ -115,17 +111,14 @@ paths:
                   type: string
                   description: CSV data holding a head conform description and the actual row data
                   default: null
-                  nullable: false
                 allow_update:
                   type: boolean
                   description: Allow updates in groups
                   default: null
-                  nullable: false
                 delete_users:
                   type: boolean
                   description: Allow for deleting of users from groups
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -137,19 +130,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupProcessCsv
+      x-operation-id-source: derived
   /group_categories:
     post:
       tags:
-      - groups
-      summary: Retrieve category list.
+      - Groups
+      summary: Retrieve category list
       requestBody:
         required: true
         content:
@@ -168,21 +163,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupCategories
+      x-operation-id-source: derived
   /group_subcategories:
     post:
       tags:
-      - groups
-      summary: 'Retrieve subcategory list.
-
-        '
+      - Groups
+      summary: Retrieve subcategory list
       requestBody:
         required: true
         content:
@@ -196,7 +191,6 @@ paths:
                   type: string
                   description: Category to retrieve subcategories of
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -208,19 +202,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupSubcategories
+      x-operation-id-source: derived
   /group_search_users:
     post:
       tags:
-      - groups
-      summary: ''
+      - Groups
+      summary: Create group search users
       requestBody:
         required: true
         content:
@@ -234,7 +230,6 @@ paths:
                   type: string
                   description: (undocumented)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -246,21 +241,22 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      x-summary-source: derived
+      operationId: postGroupSearchUsers
+      x-operation-id-source: derived
   /group_exists:
     post:
       tags:
-      - groups
-      summary: 'Check if group exists.
-
-        '
+      - Groups
+      summary: Check if group exists
       requestBody:
         required: true
         content:
@@ -274,7 +270,6 @@ paths:
                   type: string
                   description: Name of the group to check for existence
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -286,21 +281,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupExists
+      x-operation-id-source: derived
   /group_create:
     post:
       tags:
-      - groups
-      summary: 'Create a new group.
-
-        '
+      - Groups
+      summary: Create a new group
       requestBody:
         required: true
         content:
@@ -321,42 +316,34 @@ paths:
                   type: string
                   description: Name of the group to create
                   default: null
-                  nullable: false
                 category:
                   type: string
                   description: Category of the group to create
                   default: null
-                  nullable: false
                 subcategory:
                   type: string
                   description: Subcategory of the group to create
                   default: null
-                  nullable: false
                 schema_id:
                   type: string
                   description: Schema-id for the group to be created
                   default: null
-                  nullable: false
                 expiration_date:
                   type: string
                   description: Retention period for the group
                   default: null
-                  nullable: false
                 description:
                   type: string
                   description: Description of the group to create
                   default: null
-                  nullable: false
                 data_classification:
                   type: string
                   description: Data classification of the group to create
                   default: null
-                  nullable: false
                 sram_co:
                   type: boolean
                   description: If True, create a SRAM CO
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -368,21 +355,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupCreate
+      x-operation-id-source: derived
   /group_update:
     post:
       tags:
-      - groups
-      summary: 'Update group property.
-
-        '
+      - Groups
+      summary: Update group property
       requestBody:
         required: true
         content:
@@ -398,17 +385,14 @@ paths:
                   type: string
                   description: Name of the group to update property of
                   default: null
-                  nullable: false
                 property_name:
                   type: string
                   description: Name of the property to update
                   default: null
-                  nullable: false
                 property_value:
                   type: string
                   description: Value of the property to update
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -420,21 +404,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupUpdate
+      x-operation-id-source: derived
   /group_delete:
     post:
       tags:
-      - groups
-      summary: 'Delete a group.
-
-        '
+      - Groups
+      summary: Delete a group
       requestBody:
         required: true
         content:
@@ -448,7 +432,6 @@ paths:
                   type: string
                   description: Name of the group to delete
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -460,21 +443,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupDelete
+      x-operation-id-source: derived
   /group_get_description:
     post:
       tags:
-      - groups
-      summary: 'Retrieve description of a group.
-
-        '
+      - Groups
+      summary: Retrieve description of a group
       requestBody:
         required: true
         content:
@@ -488,7 +471,6 @@ paths:
                   type: string
                   description: Name of the group
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -500,21 +482,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupGetDescription
+      x-operation-id-source: derived
   /group_user_is_member:
     post:
       tags:
-      - groups
-      summary: 'Check if user is member of a group.
-
-        '
+      - Groups
+      summary: Check if user is member of a group
       requestBody:
         required: true
         content:
@@ -529,12 +511,10 @@ paths:
                   type: string
                   description: Name of the user
                   default: null
-                  nullable: false
                 group_name:
                   type: string
                   description: Name of the group
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -546,21 +526,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupUserIsMember
+      x-operation-id-source: derived
   /group_user_add:
     post:
       tags:
-      - groups
-      summary: 'Add a user to a group.
-
-        '
+      - Groups
+      summary: Add a user to a group
       requestBody:
         required: true
         content:
@@ -575,12 +555,10 @@ paths:
                   type: string
                   description: Name of the user
                   default: null
-                  nullable: false
                 group_name:
                   type: string
                   description: Name of the group
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -592,21 +570,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupUserAdd
+      x-operation-id-source: derived
   /group_user_update_role:
     post:
       tags:
-      - groups
-      summary: 'Update role of a user in a group.
-
-        '
+      - Groups
+      summary: Update role of a user in a group
       requestBody:
         required: true
         content:
@@ -622,17 +600,14 @@ paths:
                   type: string
                   description: Name of the user
                   default: null
-                  nullable: false
                 group_name:
                   type: string
                   description: Name of the group
                   default: null
-                  nullable: false
                 new_role:
                   type: string
                   description: New role of the user
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -644,21 +619,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupUserUpdateRole
+      x-operation-id-source: derived
   /group_remove_user_from_group:
     post:
       tags:
-      - groups
-      summary: 'Remove a user from a group.
-
-        '
+      - Groups
+      summary: Remove a user from a group
       requestBody:
         required: true
         content:
@@ -673,12 +648,10 @@ paths:
                   type: string
                   description: Name of the user
                   default: null
-                  nullable: false
                 group_name:
                   type: string
                   description: Name of the group
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -690,24 +663,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postGroupRemoveUserFromGroup
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -724,8 +699,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

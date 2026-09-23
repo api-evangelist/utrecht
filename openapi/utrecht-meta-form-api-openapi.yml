@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin meta_form API
+  title: Yoda core Meta Form API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,9 +18,7 @@ paths:
     post:
       tags:
       - meta_form
-      summary: 'Retrieve all information required to load a metadata form in either the research or vault space.
-
-        '
+      summary: Retrieve all information required to load a metadata form in either the…
       requestBody:
         required: true
         content:
@@ -34,7 +32,6 @@ paths:
                   type: string
                   description: Collection to retrieve all information required to load a metadata form from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -46,21 +43,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postMetaFormLoad
+      x-operation-id-source: derived
   /meta_form_save:
     post:
       tags:
       - meta_form
-      summary: 'Validate and store JSON metadata for a given collection.
-
-        '
+      summary: Validate and store JSON metadata for a given collection
       requestBody:
         required: true
         content:
@@ -75,12 +72,10 @@ paths:
                   type: string
                   description: Collection to save metadata on
                   default: null
-                  nullable: false
                 metadata:
                   type: object
                   description: Metadata to save
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -92,24 +87,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postMetaFormSave
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -126,8 +123,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

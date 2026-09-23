@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_deaccession_status",
+            "url": "https://portal.yoda.uu.nl/api/vault_deaccession_status",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_request_deaccession",
+            "url": "https://portal.yoda.uu.nl/api/vault_request_deaccession",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_cancel_deaccession",
+            "url": "https://portal.yoda.uu.nl/api/vault_cancel_deaccession",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_approve_deaccession",
+            "url": "https://portal.yoda.uu.nl/api/vault_approve_deaccession",
             "body": {
               "type": "json",
               "data": "{}"

@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_action_permitted",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_action_permitted",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_roles_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_roles_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_schema_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_schema_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -70,7 +70,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_resubmission_id_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_resubmission_id_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -85,7 +85,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_browse",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_browse",
             "body": {
               "type": "json",
               "data": "{}"
@@ -100,7 +100,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -115,7 +115,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -130,7 +130,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_attachment_upload_permission",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_attachment_upload_permission",
             "body": {
               "type": "json",
               "data": "{}"
@@ -145,7 +145,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_attachment_post_upload_actions",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_attachment_post_upload_actions",
             "body": {
               "type": "json",
               "data": "{}"
@@ -160,7 +160,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_attachments_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_attachments_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -175,7 +175,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_attachments_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_attachments_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -190,7 +190,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_preliminary_review_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_preliminary_review_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -205,7 +205,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_preliminary_review_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_preliminary_review_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -220,7 +220,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_datamanager_review_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_datamanager_review_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -235,7 +235,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_datamanager_review_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_datamanager_review_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -250,7 +250,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_dac_members_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_dac_members_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -264,7 +264,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_assignment_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_assignment_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -279,7 +279,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_assignment_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_assignment_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -294,7 +294,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_review_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_review_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -309,7 +309,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_reviews_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_reviews_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -324,7 +324,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_evaluation_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_evaluation_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -339,7 +339,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_approval_conditions_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_approval_conditions_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -354,7 +354,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_evaluation_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_evaluation_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -369,7 +369,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_feedback_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_feedback_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -384,7 +384,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_preregistration_submit",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_preregistration_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -399,7 +399,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_preregistration_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_preregistration_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -414,7 +414,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_preregistration_confirm",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_preregistration_confirm",
             "body": {
               "type": "json",
               "data": "{}"
@@ -429,7 +429,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_dta_upload_permission",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_dta_upload_permission",
             "body": {
               "type": "json",
               "data": "{}"
@@ -444,7 +444,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_dta_post_upload_actions",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_dta_post_upload_actions",
             "body": {
               "type": "json",
               "data": "{}"
@@ -459,7 +459,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_dta_path_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_dta_path_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -473,7 +473,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_signed_dta_upload_permission",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_signed_dta_upload_permission",
             "body": {
               "type": "json",
               "data": "{}"
@@ -488,7 +488,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_signed_dta_post_upload_actions",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_signed_dta_post_upload_actions",
             "body": {
               "type": "json",
               "data": "{}"
@@ -503,7 +503,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_signed_dta_path_get",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_signed_dta_path_get",
             "body": {
               "type": "json",
               "data": "{}"
@@ -518,7 +518,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/datarequest_data_ready",
+            "url": "https://portal.yoda.uu.nl/api/datarequest_data_ready",
             "body": {
               "type": "json",
               "data": "{}"

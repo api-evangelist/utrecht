@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/admin_has_access",
+            "url": "https://portal.yoda.uu.nl/api/admin_has_access",
             "body": {
               "type": "json",
               "data": "{}"

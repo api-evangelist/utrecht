@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/meta_form_load",
+            "url": "https://portal.yoda.uu.nl/api/meta_form_load",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/meta_form_save",
+            "url": "https://portal.yoda.uu.nl/api/meta_form_save",
             "body": {
               "type": "json",
               "data": "{}"

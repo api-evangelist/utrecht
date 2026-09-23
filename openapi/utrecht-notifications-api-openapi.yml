@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin notifications API
+  title: Yoda core Notifications API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,15 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: notifications
+- name: Notifications
 paths:
   /notifications_load:
     post:
       tags:
-      - notifications
-      summary: 'Load user notifications.
-
-        '
+      - Notifications
+      summary: Load user notifications
       requestBody:
         required: true
         content:
@@ -32,7 +30,6 @@ paths:
                   type: string
                   description: Sort order of notifications on timestamp ("asc" or "desc", default "desc")
                   default: '''desc'''
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -44,21 +41,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postNotificationsLoad
+      x-operation-id-source: derived
   /notifications_dismiss:
     post:
       tags:
-      - notifications
-      summary: 'Dismiss user notification.
-
-        :param identifier: Identifier of notification message'
+      - Notifications
+      summary: 'Dismiss user notification. :param identifier: Identifier of notification message'
       requestBody:
         required: true
         content:
@@ -72,7 +69,6 @@ paths:
                   type: string
                   description: Identifier of notification message
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -84,21 +80,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postNotificationsDismiss
+      x-operation-id-source: derived
   /notifications_dismiss_all:
     post:
       tags:
-      - notifications
-      summary: 'Dismiss all user notifications.
-
-        '
+      - Notifications
+      summary: Dismiss all user notifications
       requestBody:
         required: true
         content:
@@ -117,24 +113,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postNotificationsDismissAll
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -151,8 +149,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

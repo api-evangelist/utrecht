@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin vault_archive API
+  title: Yoda core Vault Archive API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -18,9 +18,7 @@ paths:
     post:
       tags:
       - vault_archive
-      summary: 'Request to archive vault data package.
-
-        '
+      summary: Request to archive vault data package
       requestBody:
         required: true
         content:
@@ -34,7 +32,6 @@ paths:
                   type: string
                   description: Collection of vault data package to archive
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -46,21 +43,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultArchive
+      x-operation-id-source: derived
   /vault_archival_status:
     post:
       tags:
       - vault_archive
-      summary: 'Request archival status of vault data package.
-
-        '
+      summary: Request archival status of vault data package
       requestBody:
         required: true
         content:
@@ -74,7 +71,6 @@ paths:
                   type: string
                   description: Collection of vault data package to request archive status from
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -86,21 +82,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultArchivalStatus
+      x-operation-id-source: derived
   /vault_extract:
     post:
       tags:
       - vault_archive
-      summary: 'Request to unarchive an archived vault data package.
-
-        '
+      summary: Request to unarchive an archived vault data package
       requestBody:
         required: true
         content:
@@ -114,7 +110,6 @@ paths:
                   type: string
                   description: Collection of vault data package to unarchive
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -126,24 +121,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postVaultExtract
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -160,8 +157,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

@@ -1,4 +1,9 @@
 {
+  "x-method": "derived",
+  "x-derived-from": "openapi/utrecht-folder-api-openapi.yml",
+  "x-source-url": "https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/tools/api/generate-openapi.py",
+  "x-provenance": "Derived from the Yoda OpenAPIs in this repo (openapi/_original/utrecht-yoda-core.yaml and utrecht-yoda-datarequest.yaml), which are Utrecht University's own generated documents. Not published by Utrecht University.",
+  "x-generated": "2026-08-30",
   "operation": "POST /folder_submit",
   "description": "Submit a research folder for review in Yoda. Based on the Yoda core API OpenAPI specification (api_core.json).",
   "request": {

@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/schema_get_schemas",
+            "url": "https://portal.yoda.uu.nl/api/schema_get_schemas",
             "body": {
               "type": "json",
               "data": "{}"

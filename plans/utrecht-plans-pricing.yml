@@ -1,3 +1,6 @@
+# Written by API Evangelist tooling from what could be observed publicly. Utrecht University publishes no document of this kind; this artifact records that absence and must not be read as an institutional claim.
+# x-method: generated
+# x-generated: '2026-08-30'
 specification: API Commons Plans
 specificationVersion: '0.1'
 schema: https://raw.githubusercontent.com/api-evangelist/interface-research/main/schema/api-commons.yml#/$defs/Plans

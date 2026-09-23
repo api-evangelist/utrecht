@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/resource_browse_group_data",
+            "url": "https://portal.yoda.uu.nl/api/resource_browse_group_data",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/resource_full_year_differentiated_group_storage",
+            "url": "https://portal.yoda.uu.nl/api/resource_full_year_differentiated_group_storage",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/resource_category_stats",
+            "url": "https://portal.yoda.uu.nl/api/resource_category_stats",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/resource_monthly_category_stats",
+            "url": "https://portal.yoda.uu.nl/api/resource_monthly_category_stats",
             "body": {
               "type": "json",
               "data": "{}"

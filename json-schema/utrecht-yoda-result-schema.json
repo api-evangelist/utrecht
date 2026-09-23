@@ -1,22 +1,41 @@
 {
+  "x-method": "derived",
+  "x-derived-from": "openapi/_original/utrecht-yoda-core.yaml",
+  "x-source-url": "https://github.com/UtrechtUniversity/yoda-ruleset/blob/development/tools/api/generate-openapi.py",
+  "x-provenance": "Derived from the Yoda OpenAPIs in this repo (openapi/_original/utrecht-yoda-core.yaml and utrecht-yoda-datarequest.yaml), which are Utrecht University's own generated documents. Not published by Utrecht University.",
+  "x-generated": "2026-08-30",
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://raw.githubusercontent.com/api-evangelist/utrecht/main/json-schema/utrecht-yoda-result-schema.json",
   "title": "Yoda API Result",
   "description": "Standard response envelope returned by every Yoda Core and Datarequest API operation. The Yoda HTTP API (https://utrechtuniversity.github.io/yoda-ruleset/) wraps all responses in this object.",
   "type": "object",
-  "required": ["status", "status_info", "data"],
+  "required": [
+    "status",
+    "status_info",
+    "data"
+  ],
   "properties": {
     "status": {
       "type": "string",
       "description": "Status identifier. 'ok' on success, or an error ID on failure."
     },
     "status_info": {
-      "type": ["string", "null"],
+      "type": [
+        "string",
+        "null"
+      ],
       "description": "Human-readable status or error description."
     },
     "data": {
       "description": "Operation-specific payload. May be an object, array, scalar, or null.",
-      "type": ["object", "array", "string", "number", "boolean", "null"]
+      "type": [
+        "object",
+        "array",
+        "string",
+        "number",
+        "boolean",
+        "null"
+      ]
     }
   }
 }

@@ -1,10 +1,10 @@
-openapi: 3.0.0
+openapi: 3.2.0
 info:
   description: Yoda core ruleset containing iRODS and Python rules and policies useful for all Yoda environments.
   contact:
     email: l.r.westerhof@uu.nl
   version: 2.1.0
-  title: Yoda core admin revisions API
+  title: Yoda core Revisions API
 servers:
 - url: https://portal.yoda.test/api
   description: Local Yoda development server
@@ -12,15 +12,13 @@ security:
 - cookieAuth: []
 - basicAuth: []
 tags:
-- name: revisions
+- name: Revisions
 paths:
   /revisions_search_on_filename:
     post:
       tags:
-      - revisions
-      summary: 'Search revisions of a file in a research folder and return list of corresponding revisions.
-
-        '
+      - Revisions
+      summary: Search revisions of a file in a research folder and return list of…
       requestBody:
         required: true
         content:
@@ -34,17 +32,14 @@ paths:
                   type: string
                   description: String to search for as part of a file name
                   default: null
-                  nullable: false
                 offset:
                   type: integer
                   description: Starting point in total resultset to start fetching
                   default: '0'
-                  nullable: false
                 limit:
                   type: integer
                   description: Max size of the resultset to be returned
                   default: '10'
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -56,21 +51,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postRevisionsSearchOnFilename
+      x-operation-id-source: derived
   /revisions_list:
     post:
       tags:
-      - revisions
-      summary: 'Get list revisions of a file in a research folder.
-
-        '
+      - Revisions
+      summary: Get list revisions of a file in a research folder
       requestBody:
         required: true
         content:
@@ -84,7 +79,6 @@ paths:
                   type: string
                   description: Path to data object to find revisions for
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -96,21 +90,21 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postRevisionsList
+      x-operation-id-source: derived
   /revisions_restore:
     post:
       tags:
-      - revisions
-      summary: 'Copy selected revision to target collection with given name.
-
-        '
+      - Revisions
+      summary: Copy selected revision to target collection with given name
       requestBody:
         required: true
         content:
@@ -127,22 +121,18 @@ paths:
                   type: string
                   description: Data id of the revision to be restored
                   default: null
-                  nullable: false
                 overwrite:
                   type: string
                   description: Overwrite indication from front end {restore_no_overwrite, restore_overwrite, restore_next_to}
                   default: null
-                  nullable: false
                 coll_target:
                   type: string
                   description: Target collection to place the file
                   default: null
-                  nullable: false
                 new_filename:
                   type: string
                   description: New file name as entered by user (in case of duplicate)
                   default: null
-                  nullable: false
       responses:
         '200':
           description: Success
@@ -154,24 +144,26 @@ paths:
                   status:
                     type: string
                   status_info:
-                    type: string
-                    nullable: true
-                  data:
-                    nullable: true
+                    type:
+                    - string
+                    - 'null'
+                  data: {}
         '400':
           $ref: '#/components/responses/status_400'
         '500':
           $ref: '#/components/responses/status_500'
+      operationId: postRevisionsRestore
+      x-operation-id-source: derived
 components:
   responses:
-    status_500:
-      description: Internal error
+    status_400:
+      description: Bad request
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
+    status_500:
+      description: Internal error
       content:
         application/json:
           schema:
@@ -188,8 +180,9 @@ components:
           description: Holds a human-readable error description
         data:
           description: empty
-          nullable: true
-          type: object
+          type:
+          - object
+          - 'null'
   securitySchemes:
     cookieAuth:
       in: cookie

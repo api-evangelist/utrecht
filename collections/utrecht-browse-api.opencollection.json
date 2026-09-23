@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/browse_folder",
+            "url": "https://portal.yoda.uu.nl/api/browse_folder",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/browse_collections",
+            "url": "https://portal.yoda.uu.nl/api/browse_collections",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/search",
+            "url": "https://portal.yoda.uu.nl/api/search",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/load_text_obj",
+            "url": "https://portal.yoda.uu.nl/api/load_text_obj",
             "body": {
               "type": "json",
               "data": "{}"

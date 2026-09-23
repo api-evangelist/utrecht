@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/revisions_search_on_filename",
+            "url": "https://portal.yoda.uu.nl/api/revisions_search_on_filename",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/revisions_list",
+            "url": "https://portal.yoda.uu.nl/api/revisions_list",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/revisions_restore",
+            "url": "https://portal.yoda.uu.nl/api/revisions_restore",
             "body": {
               "type": "json",
               "data": "{}"

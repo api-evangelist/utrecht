@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_lock",
+            "url": "https://portal.yoda.uu.nl/api/folder_lock",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_unlock",
+            "url": "https://portal.yoda.uu.nl/api/folder_unlock",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_submit",
+            "url": "https://portal.yoda.uu.nl/api/folder_submit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_unsubmit",
+            "url": "https://portal.yoda.uu.nl/api/folder_unsubmit",
             "body": {
               "type": "json",
               "data": "{}"
@@ -86,7 +86,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_accept",
+            "url": "https://portal.yoda.uu.nl/api/folder_accept",
             "body": {
               "type": "json",
               "data": "{}"
@@ -101,7 +101,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_reject",
+            "url": "https://portal.yoda.uu.nl/api/folder_reject",
             "body": {
               "type": "json",
               "data": "{}"
@@ -116,7 +116,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/folder_get_locks",
+            "url": "https://portal.yoda.uu.nl/api/folder_get_locks",
             "body": {
               "type": "json",
               "data": "{}"

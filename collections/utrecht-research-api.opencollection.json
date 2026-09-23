@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_folder_add",
+            "url": "https://portal.yoda.uu.nl/api/research_folder_add",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_folder_copy",
+            "url": "https://portal.yoda.uu.nl/api/research_folder_copy",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_folder_move",
+            "url": "https://portal.yoda.uu.nl/api/research_folder_move",
             "body": {
               "type": "json",
               "data": "{}"
@@ -71,7 +71,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_folder_rename",
+            "url": "https://portal.yoda.uu.nl/api/research_folder_rename",
             "body": {
               "type": "json",
               "data": "{}"
@@ -86,7 +86,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_folder_delete",
+            "url": "https://portal.yoda.uu.nl/api/research_folder_delete",
             "body": {
               "type": "json",
               "data": "{}"
@@ -101,7 +101,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_list_temporary_files",
+            "url": "https://portal.yoda.uu.nl/api/research_list_temporary_files",
             "body": {
               "type": "json",
               "data": "{}"
@@ -116,7 +116,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_file_copy",
+            "url": "https://portal.yoda.uu.nl/api/research_file_copy",
             "body": {
               "type": "json",
               "data": "{}"
@@ -131,7 +131,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_file_rename",
+            "url": "https://portal.yoda.uu.nl/api/research_file_rename",
             "body": {
               "type": "json",
               "data": "{}"
@@ -146,7 +146,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_file_move",
+            "url": "https://portal.yoda.uu.nl/api/research_file_move",
             "body": {
               "type": "json",
               "data": "{}"
@@ -161,7 +161,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_file_delete",
+            "url": "https://portal.yoda.uu.nl/api/research_file_delete",
             "body": {
               "type": "json",
               "data": "{}"
@@ -176,7 +176,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_system_metadata",
+            "url": "https://portal.yoda.uu.nl/api/research_system_metadata",
             "body": {
               "type": "json",
               "data": "{}"
@@ -191,7 +191,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_collection_details",
+            "url": "https://portal.yoda.uu.nl/api/research_collection_details",
             "body": {
               "type": "json",
               "data": "{}"
@@ -206,7 +206,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/research_manifest",
+            "url": "https://portal.yoda.uu.nl/api/research_manifest",
             "body": {
               "type": "json",
               "data": "{}"

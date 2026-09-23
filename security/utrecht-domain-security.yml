@@ -1,6 +1,8 @@
-generated: '2026-07-11'
+generated: '2026-08-30'
 method: probed
-source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts. Re-probed 2026-08-30 after the Yoda OpenAPIs 
+  were re-based off the RFC 2606 placeholder host portal.yoda.test onto the verified production hosts 
+  portal.yoda.uu.nl and i-lab.yoda.uu.nl.
 hosts:
 - host: www.uu.nl
   https: true
@@ -14,8 +16,30 @@ hosts:
   cert_expires: Aug 23 23:09:49 2026 GMT
   hsts: true
   hsts_max_age: 63072000
-- host: portal.yoda.test
-  https: false
+- host: portal.yoda.uu.nl
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  4 14:03:46 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: i-lab.yoda.uu.nl
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Dec  1 06:37:54 2026 GMT
+  hsts: true
+  hsts_max_age: 31536000
+- host: login.uu.nl
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Feb  8 10:17:41 2027 GMT
+  hsts: false
+- host: research-portal.uu.nl
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Oct  8 21:35:52 2026 GMT
+  hsts: true
+  hsts_max_age: 2592000
+  operator: tenant
 domains:
 - domain: uu.nl
   dnssec: true
@@ -29,8 +53,3 @@ domains:
   spf: true
   dmarc: true
   dmarc_policy: quarantine
-- domain: yoda.test
-  dnssec: false
-  caa: []
-  spf: false
-  dmarc: false

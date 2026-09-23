@@ -26,7 +26,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_archive",
+            "url": "https://portal.yoda.uu.nl/api/vault_archive",
             "body": {
               "type": "json",
               "data": "{}"
@@ -41,7 +41,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_archival_status",
+            "url": "https://portal.yoda.uu.nl/api/vault_archival_status",
             "body": {
               "type": "json",
               "data": "{}"
@@ -56,7 +56,7 @@
           },
           "http": {
             "method": "POST",
-            "url": "https://portal.yoda.test/api/vault_extract",
+            "url": "https://portal.yoda.uu.nl/api/vault_extract",
             "body": {
               "type": "json",
               "data": "{}"
