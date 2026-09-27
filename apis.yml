@@ -67,7 +67,7 @@ tags:
 - Open Access
 - Open Science
 - Library
-- Open-Source
+- Open Source
 tags_raw:
 - Education
 - Higher Education
@@ -83,6 +83,7 @@ tags_raw:
 - Open Science
 - Library
 - Open Source
+- Open-Source
 created: '2026-06-03'
 modified: '2026-08-30'
 specificationVersion: '0.23'
@@ -115,7 +116,7 @@ apis:
     software, not a commercial tenancy — Utrecht hosts and operates the instance. The DSpace REST/OAI
     contract itself is DSpace's, so no generic DSpace OpenAPI is saved under this slug.
 - aid: utrecht:utrecht-admin-api
-  name: Utrecht University admin API
+  name: Utrecht University Admin API
   description: The admin API from Utrecht University — 1 operation(s) for admin.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -148,7 +149,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-browse-api
-  name: Utrecht University browse API
+  name: Utrecht University Browse API
   description: The browse API from Utrecht University — 4 operation(s) for browse.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -181,7 +182,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-data-access-token-api
-  name: Utrecht University data_access_token API
+  name: Utrecht University Data Access Token API
   description: >-
     The data_access_token API from Utrecht University — 4 operation(s) for data_access_token.
   humanURL: https://utrechtuniversity.github.io/yoda/
@@ -214,7 +215,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-datarequest-api
-  name: Utrecht University datarequest API
+  name: Utrecht University Datarequest API
   description: The datarequest API from Utrecht University — 34 operation(s) for datarequest.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -245,7 +246,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-folder-api
-  name: Utrecht University folder API
+  name: Utrecht University Folder API
   description: The folder API from Utrecht University — 7 operation(s) for folder.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -278,7 +279,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-groups-api
-  name: Utrecht University groups API
+  name: Utrecht University Groups API
   description: The groups API from Utrecht University — 15 operation(s) for groups.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -311,7 +312,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-meta-api
-  name: Utrecht University meta API
+  name: Utrecht University Meta API
   description: The meta API from Utrecht University — 2 operation(s) for meta.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -344,7 +345,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-meta-form-api
-  name: Utrecht University meta_form API
+  name: Utrecht University Meta Form API
   description: The meta_form API from Utrecht University — 2 operation(s) for meta_form.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -376,7 +377,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-notifications-api
-  name: Utrecht University notifications API
+  name: Utrecht University Notifications API
   description: The notifications API from Utrecht University — 3 operation(s) for notifications.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -409,7 +410,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-provenance-api
-  name: Utrecht University provenance API
+  name: Utrecht University Provenance API
   description: The provenance API from Utrecht University — 1 operation(s) for provenance.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -442,7 +443,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-publication-troubleshoot-api
-  name: Utrecht University publication_troubleshoot API
+  name: Utrecht University Publication Troubleshoot API
   description: >-
     The publication_troubleshoot API from Utrecht University — 1 operation(s) for publication_troubleshoot.
   humanURL: https://utrechtuniversity.github.io/yoda/
@@ -475,7 +476,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-research-api
-  name: Utrecht University research API
+  name: Utrecht University Research API
   description: The research API from Utrecht University — 13 operation(s) for research.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -508,7 +509,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-revisions-api
-  name: Utrecht University revisions API
+  name: Utrecht University Revisions API
   description: The revisions API from Utrecht University — 3 operation(s) for revisions.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -541,7 +542,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-schema-api
-  name: Utrecht University schema API
+  name: Utrecht University Schema API
   description: The schema API from Utrecht University — 1 operation(s) for schema.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -574,7 +575,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-schema-transformation-api
-  name: Utrecht University schema_transformation API
+  name: Utrecht University Schema Transformation API
   description: >-
     The schema_transformation API from Utrecht University — 1 operation(s) for schema_transformation.
   humanURL: https://utrechtuniversity.github.io/yoda/
@@ -608,7 +609,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-settings-api
-  name: Utrecht University settings API
+  name: Utrecht University Settings API
   description: The settings API from Utrecht University — 2 operation(s) for settings.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -641,7 +642,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-stats-api
-  name: Utrecht University stats API
+  name: Utrecht University Stats API
   description: The stats API from Utrecht University — 4 operation(s) for stats.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -674,7 +675,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-api
-  name: Utrecht University vault API
+  name: Utrecht University Vault API
   description: The vault API from Utrecht University — 16 operation(s) for vault.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -707,7 +708,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-archive-api
-  name: Utrecht University vault_archive API
+  name: Utrecht University Vault Archive API
   description: The vault_archive API from Utrecht University — 3 operation(s) for vault_archive.
   humanURL: https://utrechtuniversity.github.io/yoda/
   baseURL: https://portal.yoda.uu.nl/api
@@ -739,7 +740,7 @@ apis:
     while POST /api/<fn> answers and 302s to /user/login without a session cookie or data access token.
     Verified 2026-08-30. Do not 'repair' this baseURL to a URL that merely returns 200 — the 404 is correct.
 - aid: utrecht:utrecht-vault-deaccession-api
-  name: Utrecht University vault_deaccession API
+  name: Utrecht University Vault Deaccession API
   description: >-
     The vault_deaccession API from Utrecht University — 4 operation(s) for vault_deaccession.
   humanURL: https://utrechtuniversity.github.io/yoda/
