@@ -225,19 +225,6 @@ paths:
       operationId: postLoadTextObj
       x-operation-id-source: derived
 components:
-  responses:
-    status_500:
-      description: Internal error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/result_error'
-    status_400:
-      description: Bad request
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/result_error'
   schemas:
     result_error:
       type: object
@@ -253,6 +240,19 @@ components:
           type:
           - object
           - 'null'
+  responses:
+    status_400:
+      description: Bad request
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
+    status_500:
+      description: Internal error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/result_error'
   securitySchemes:
     cookieAuth:
       in: cookie
