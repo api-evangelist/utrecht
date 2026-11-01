@@ -1,4 +1,4 @@
-# Utrecht University (utrecht)
+# Utrecht University
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -64,53 +64,205 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Utrecht University (Universiteit Utrecht) is a public research university in the Netherlands, ranked #105 in the QS World University Rankings 2025. Its public developer and API footprint centers on open research infrastructure — a DSpace institutional repository with OAI-PMH metadata harvesting, the open-source Yoda research data management platform, and a large public GitHub organization — rather than a single self-service API developer portal.
+Utrecht University (Universiteit Utrecht) is a public research university in Utrecht, Netherlands, founded in 1636 and a member of the League of European Research Universities. It is one of the few universities in this catalog whose largest machine-readable surface is its OWN engineering rather than a vendor's: Utrecht authors and operates Yoda, a GPL-3.0 iRODS-based research data management platform (github.com/UtrechtUniversity/yoda-ruleset), and runs it in production at portal.yoda.uu.nl. The Yoda HTTP API is real but not open — every call redirects to SolisID login unless it carries a session cookie or a Yoda data access token — so the OpenAPIs in this repo describe a live institution-operated API that no anonymous client can call. Alongside it the University Library runs a DSpace 9.0 institutional repository whose REST API and OAI-PMH interface are both openly readable at dspace.library.uu.nl, and IT Services operates a SAML 2.0 identity provider registered in the SURFconext federation. The research information system is NOT Utrecht's: research-portal.uu.nl is an Elsevier Pure tenancy (uu.elsevierpure.com), recorded here as a tenant relationship and not as Utrecht's contract. There is no central developer portal, no api.uu.nl, no public course-catalog or campus API, and no published API terms or rate limits; OSIRIS, the student administration system, returns 403 to unauthenticated clients.
 
-- APIs.json: https://raw.githubusercontent.com/api-evangelist/utrecht/refs/heads/main/apis.yml
-- Run with Naftiko: https://github.com/naftiko/fleet?utm_source=api-evangelist&utm_medium=readme&utm_campaign=utrecht-api-evangelist&utm_content=repo
+**Areas:** Education · Higher Education · University · Netherlands · Europe · Research Data · Research Data Management · Institutional Repository · Identity Federation · OAI-PMH · Open Access · Open Science
 
-## Type
+## Utrecht University on APIs.io
 
-- Index / Consumer / 3rd-Party
+Everything profiled for Utrecht University is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/utrecht/](https://apis.io/providers/utrecht/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (24)
 
-Education, Higher Education, University, Netherlands, Research Data, Open Access, Library, Open Source
+- [Utrecht University Repository OAI-PMH](https://apis.io/apis/utrecht/repository-oai/) — OAI-PMH 2.0 metadata harvesting interface for the Utrecht University Library institutional repository. Verified live 2026-08-30 on DSpace 9.0: Identify,…
+- [Utrecht University Admin API](https://apis.io/apis/utrecht/utrecht-admin-api/) — The admin API from Utrecht University — 1 operation(s) for admin.
+- [Utrecht University Browse API](https://apis.io/apis/utrecht/utrecht-browse-api/) — The browse API from Utrecht University — 4 operation(s) for browse.
+- [Utrecht University Data Access Token API](https://apis.io/apis/utrecht/utrecht-data-access-token-api/) — The data_access_token API from Utrecht University — 4 operation(s) for data_access_token.
+- [Utrecht University Datarequest API](https://apis.io/apis/utrecht/utrecht-datarequest-api/) — The datarequest API from Utrecht University — 34 operation(s) for datarequest.
+- [Utrecht University Folder API](https://apis.io/apis/utrecht/utrecht-folder-api/) — The folder API from Utrecht University — 7 operation(s) for folder.
+- [Utrecht University Groups API](https://apis.io/apis/utrecht/utrecht-groups-api/) — The groups API from Utrecht University — 15 operation(s) for groups.
+- [Utrecht University Meta API](https://apis.io/apis/utrecht/utrecht-meta-api/) — The meta API from Utrecht University — 2 operation(s) for meta.
+- [Utrecht University Meta Form API](https://apis.io/apis/utrecht/utrecht-meta-form-api/) — The meta_form API from Utrecht University — 2 operation(s) for meta_form.
+- [Utrecht University Notifications API](https://apis.io/apis/utrecht/utrecht-notifications-api/) — The notifications API from Utrecht University — 3 operation(s) for notifications.
+- [Utrecht University Provenance API](https://apis.io/apis/utrecht/utrecht-provenance-api/) — The provenance API from Utrecht University — 1 operation(s) for provenance.
+- [Utrecht University Publication Troubleshoot API](https://apis.io/apis/utrecht/utrecht-publication-troubleshoot-api/) — The publication_troubleshoot API from Utrecht University — 1 operation(s) for publication_troubleshoot.
+- [Utrecht University Research API](https://apis.io/apis/utrecht/utrecht-research-api/) — The research API from Utrecht University — 13 operation(s) for research.
+- [Utrecht University Revisions API](https://apis.io/apis/utrecht/utrecht-revisions-api/) — The revisions API from Utrecht University — 3 operation(s) for revisions.
+- [Utrecht University Schema API](https://apis.io/apis/utrecht/utrecht-schema-api/) — The schema API from Utrecht University — 1 operation(s) for schema.
+- [Utrecht University Schema Transformation API](https://apis.io/apis/utrecht/utrecht-schema-transformation-api/) — The schema_transformation API from Utrecht University — 1 operation(s) for schema_transformation.
+- [Utrecht University Settings API](https://apis.io/apis/utrecht/utrecht-settings-api/) — The settings API from Utrecht University — 2 operation(s) for settings.
+- [Utrecht University Stats API](https://apis.io/apis/utrecht/utrecht-stats-api/) — The stats API from Utrecht University — 4 operation(s) for stats.
+- [Utrecht University Vault API](https://apis.io/apis/utrecht/utrecht-vault-api/) — The vault API from Utrecht University — 16 operation(s) for vault.
+- [Utrecht University Vault Archive API](https://apis.io/apis/utrecht/utrecht-vault-archive-api/) — The vault_archive API from Utrecht University — 3 operation(s) for vault_archive.
+- [Utrecht University Vault Deaccession API](https://apis.io/apis/utrecht/utrecht-vault-deaccession-api/) — The vault_deaccession API from Utrecht University — 4 operation(s) for vault_deaccession.
+- [Utrecht University Repository REST API](https://apis.io/apis/utrecht/repository-rest/) — The DSpace 9.0 HAL/JSON REST API behind the Utrecht University Repository. Openly readable without a key: the root at /server/api enumerates ~60 link…
+- [Utrecht University SAML 2.0 Identity Provider Metadata](https://apis.io/apis/utrecht/identity-federation/) — Signed SAML 2.0 EntityDescriptor for Utrecht University's identity provider, served as XML at a stable URL and carried in SURFconext's national federation…
+- [Utrecht University Research Portal (Elsevier Pure tenancy)](https://apis.io/apis/utrecht/pure-research-portal/) — Utrecht University's current research information system and public research portal, running on Elsevier Pure. Two machine doors were probed on 2026-08-30:…
 
-## APIs
+### Published properties
 
-- **Utrecht University Repository OAI-PMH** — OAI-PMH metadata harvesting for the Library's DSpace institutional repository. Docs: https://www.uu.nl/en/university-library/utrecht-university-repository — Base URL: https://dspace.library.uu.nl/server/oai/request
-- **Yoda Research Data Management Platform** — Open-source iRODS-based research data service (deposit, share, publish, preserve). Docs: https://utrechtuniversity.github.io/yoda/ — Source: https://github.com/UtrechtUniversity/yoda
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## Plans
+#### Agentic access (1)
 
-- [plans/utrecht-plans-pricing.yml](plans/utrecht-plans-pricing.yml)
+Which operations an agent can call, which act, and which need a human in the loop.
 
-## Rate Limits
+- [Utrecht Agentic Access](https://apis.io/agentic-access/utrecht/utrecht-agentic-access/)
 
-- [rate-limits/utrecht-rate-limits.yml](rate-limits/utrecht-rate-limits.yml)
+#### JSON Schema (2)
 
-## FinOps
+The data models the API reads and writes.
 
-- [finops/utrecht-finops.yml](finops/utrecht-finops.yml)
+- [Yoda API Error Result](https://apis.io/schemas/utrecht/utrecht-yoda-error/)
+- [Yoda API Result](https://apis.io/schemas/utrecht/utrecht-yoda-result/)
 
-## Timestamps
+#### JSON Structure (2)
 
-- Created: 2026-06-03
-- Modified: 2026-06-03
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Utrecht Yoda Error Structure](https://apis.io/json-structure/utrecht/utrecht-yoda-error-structure/)
+- [Utrecht Yoda Result Structure](https://apis.io/json-structure/utrecht/utrecht-yoda-result-structure/)
 
-- Website: https://www.uu.nl/en
-- GitHub: https://github.com/UtrechtUniversity
-- LinkedIn: https://www.linkedin.com/school/utrecht-university/
-- Repository: https://dspace.library.uu.nl/
-- Review: [review.yml](review.yml)
+#### JSON-LD (1)
 
-## Notes
+Linked-data contexts for the provider's vocabulary.
 
-Findings reflect publicly verifiable resources only. The DSpace OAI-PMH endpoint was confirmed live (DSpace 9, valid OAI-PMH 2.0 XML). Yoda code and documentation are public, but live data access requires institutional SolisID/SSO credentials. The `catalog.data.uu.nl` host did not resolve during review and is not cataloged. No endpoints were fabricated; administrative/identity systems are gated and not openly documented as self-service APIs.
+- [Utrecht Context](https://apis.io/jsonld/utrecht/utrecht-context/)
 
-## Maintainers
+#### Vocabulary (1)
 
-- Kin Lane — kin@apievangelist.com
+The provider's domain terms, defined.
+
+- [Utrecht University Yoda API Vocabulary](https://apis.io/vocabularies/utrecht/utrecht-vocabulary/)
+
+#### Examples (2)
+
+Example requests and responses.
+
+- [Utrecht Yoda Datarequest Submit Example](https://apis.io/examples/utrecht/utrecht-yoda-datarequest-submit-example/)
+- [Utrecht Yoda Folder Submit Example](https://apis.io/examples/utrecht/utrecht-yoda-folder-submit-example/)
+
+#### Collections (20)
+
+Postman and Open Collection request collections.
+
+- [Yoda core admin API](https://apis.io/collections/utrecht/open-utrecht-admin-api/)
+- [Yoda core admin browse API](https://apis.io/collections/utrecht/open-utrecht-browse-api/)
+- [Yoda core admin data_access_token API](https://apis.io/collections/utrecht/open-utrecht-data-access-token-api/)
+- [Yoda core admin datarequest API](https://apis.io/collections/utrecht/open-utrecht-datarequest-api/)
+- [Yoda core admin folder API](https://apis.io/collections/utrecht/open-utrecht-folder-api/)
+- [Yoda core admin groups API](https://apis.io/collections/utrecht/open-utrecht-groups-api/)
+- [Yoda core admin meta API](https://apis.io/collections/utrecht/open-utrecht-meta-api/)
+- [Yoda core admin meta_form API](https://apis.io/collections/utrecht/open-utrecht-meta-form-api/)
+- [Yoda core admin notifications API](https://apis.io/collections/utrecht/open-utrecht-notifications-api/)
+- [Yoda core admin provenance API](https://apis.io/collections/utrecht/open-utrecht-provenance-api/)
+- [Yoda core admin publication_troubleshoot API](https://apis.io/collections/utrecht/open-utrecht-publication-troubleshoot-api/)
+- [Yoda core admin research API](https://apis.io/collections/utrecht/open-utrecht-research-api/)
+- [Yoda core admin revisions API](https://apis.io/collections/utrecht/open-utrecht-revisions-api/)
+- [Yoda core admin schema API](https://apis.io/collections/utrecht/open-utrecht-schema-api/)
+- [Yoda core admin schema_transformation API](https://apis.io/collections/utrecht/open-utrecht-schema-transformation-api/)
+- [Yoda core admin settings API](https://apis.io/collections/utrecht/open-utrecht-settings-api/)
+- [Yoda core admin stats API](https://apis.io/collections/utrecht/open-utrecht-stats-api/)
+- [Yoda core admin vault API](https://apis.io/collections/utrecht/open-utrecht-vault-api/)
+- [Yoda core admin vault_archive API](https://apis.io/collections/utrecht/open-utrecht-vault-archive-api/)
+- [Yoda core admin vault_deaccession API](https://apis.io/collections/utrecht/open-utrecht-vault-deaccession-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [Utrecht University — jsonschema rules](https://apis.io/rules/utrecht/utrecht-jsonschema-spectral-rules/)
+- [Utrecht University API Rules](https://apis.io/rules/utrecht/utrecht-rules/)
+
+#### Security (3)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Utrecht Authentication](https://apis.io/security/utrecht/utrecht-authentication/)
+- [Utrecht Domain Security](https://apis.io/security/utrecht/utrecht-domain-security/)
+- [Utrecht Vulnerability Disclosure](https://apis.io/security/utrecht/utrecht-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Utrecht Plans Pricing](https://apis.io/plans/utrecht/utrecht-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Utrecht Rate Limits](https://apis.io/rate-limits/utrecht/utrecht-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Utrecht Finops](https://apis.io/finops/utrecht/utrecht-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.uu.nl/en)
+- [Documentation](https://utrechtuniversity.github.io/yoda/)
+- [API reference](https://dspace.library.uu.nl/server/api)
+- [Support](https://www.uu.nl/en/contact)
+- [Blog](https://www.uu.nl/en/organisation/news)
+- [Terms of service](https://www.uu.nl/en/disclaimer)
+- [Privacy policy](https://www.uu.nl/en/privacy)
+
+## API Evangelist rating
+
+**Kin Score 39.7** — developing · rubric 0.25.0 · scored 2026-10-23
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 52.9 |
+| Contract governance | 9.8 |
+| Operational transparency | 21.1 |
+| Developer ergonomics | 35.7 |
+| Access clarity | 26.3 |
+
+**Agent readiness 20.3** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | documented (partial credit) |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+| Pagination Ratio | na |
+| Operation Distinctiveness | mostly (partial credit) |
+
+**Regulatory alignment 30.4** — Education & Research
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/utrecht/](https://apis.io/providers/utrecht/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Utrecht University: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/utrecht/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
